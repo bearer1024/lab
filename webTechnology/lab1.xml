@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bibliographic>
+    <articles>
+        <author>Micheal</author>
+        <title>A service-oriented implentation of
+            dynamic flexibility in workflows.</title>
+        <pubDate>2006</pubDate>
+	    <startPage>291</startPage>
+        <endPage>308</endPage>
+        <journal>computer science</journal>
+    </articles>
+	<books>
+		<author>G.Alonso</author>
+		<title>webserivice.</title>
+		<pubDate>2004</pubDate>
+        <publisher>Spring Verlag</publisher>
+    </books>
+    <articles>
+        <author>H. Boley</author>
+        <title>Design ratoinale for ruleml</title>
+        <pubDate>2001</pubDate>
+        <startPage>381</startPage>
+        <endPage>401</endPage>
+        <journal>SWWS</journal>
+    </articles>
+    <unpublished>
+        <author>M.G. Buscemi</author>
+        <date>2007</date>
+    </unpublished>
+    <website>
+        <author>J.schlimmer</author>
+        <title>web service</title>
+        <URL>http://www.w3.org</URL>
+        <date>2006</date>
+    </website>
+    <articles>
+        <author>F. Kamoun</author>
+        <title>A roadmap</title>
+        <pubDate>2007</pubDate>
+        <startPage></startPage>
+        <endPage></endPage>
+    </articles>
+</bibliographic>
