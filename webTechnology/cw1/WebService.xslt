@@ -16,14 +16,23 @@
                     <xsl:for-each select="interface/abstract_method">
                         <tr>
                             <td>
-                                <xsl:value-of select="@name"/>
+                                <b><xsl:value-of select="@name"/></b>
                             </td>
                             <td>
                                 <xsl:value-of select="return"/>
                             </td>
                             <td>
+                                <!--
+                                <xsl:for-each select="./">
+                                    <xsl:value-of select="arguments/parameter[@type]"/>:
+                                    <xsl:value-of select="arguments/parameter/@type"/>
+                                </xsl:for-each>
+                                -->
+                                <xsl:value-of select="arguments/parameter[@type]"/>:
+                                <xsl:value-of select="arguments/parameter/@type"/>,
                                 <xsl:value-of select="arguments/parameter[@type]"/>:
                                 <xsl:value-of select="arguments/parameter/@type"/>
+
                             </td>
                         </tr>
                     </xsl:for-each>
