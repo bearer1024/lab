@@ -13,6 +13,20 @@
                         <th style="text-align:left">Return type</th>
                         <th style="text-align:left">Input parameters</th>
                     </tr>
+                    <xsl:for-each select="interface/abstract_method">
+                        <tr>
+                            <td>
+                                <xsl:value-of select="@name"/>
+                            </td>
+                            <td>
+                                <xsl:value-of select="return"/>
+                            </td>
+                            <td>
+                                <xsl:value-of select="arguments/parameter[@type]"/>:
+                                <xsl:value-of select="arguments/parameter/@type"/>
+                            </td>
+                        </tr>
+                    </xsl:for-each>
                 </table>
             </body>
         </html>
