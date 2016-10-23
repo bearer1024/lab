@@ -1,0 +1,4 @@
+/course/student/name
+count(//course/student)
+//course/student[cw1>50]
+sum(//student[cw1>50]/project) div  count(//student[cw1>50])

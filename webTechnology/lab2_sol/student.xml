@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="studentHTML.xslt" ?>
+<course>
+      <name id="CO7098">WTech</name>
+      <teacher id="srm13">
+         <name>Y Hong</name>
+      </teacher>
+      <student id="ls1">
+         <name>Lisa Simpson</name>
+         <cw1>30</cw1>
+         <project>80</project>
+         <final>85</final>
+      </student>
+      <student id="bs1">
+         <name>Bart Simson</name>
+         <cw1>80</cw1>
+         <project>100</project>
+         <final>82</final>
+      </student>
+      <student id="hs1">
+         <name>Homer Simpson</name>
+         <cw1>60</cw1>
+         <project>50</project>
+         <final>90</final>
+      </student>
+</course>
