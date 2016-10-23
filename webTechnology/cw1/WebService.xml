@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="WebService.xslt" ?>
+<interface name="WebServiceInterface">
+			<package>uk.ac.le.cs.wt</package>
+			<import>java.rmi.RemoteException</import>
+			<import>java.io.*</import>
+			<abstract_method name="login">
+				<modifier>public</modifier>
+				<arguments>
+					<parameter type="int">userid</parameter>
+					<parameter type="String">password</parameter>
+				</arguments>
+				<return>boolean</return>
+			</abstract_method>
+			<abstract_method name="sendEmail">
+				<modifier>private</modifier>
+				<arguments>
+					<parameter type="String">recipient</parameter>
+					<parameter type="String">message</parameter>
+				</arguments>
+				<exceptions>
+					<exception>IOException</exception>
+					<exception>RemoteException</exception>
+				</exceptions>
+				<return>void</return>
+			</abstract_method>
+</interface>		
