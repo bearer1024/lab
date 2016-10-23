@@ -2,4 +2,24 @@
     <xs:element name="articles">
         <xs:complexType>
             <xs:sequence>
-                <xs:element type="xs:
+                <xs:element name="author" type="xs:string" minOccurs="1"/>
+                <xs:element name="title" type="xs:string"minOccurs="1"/>
+                <xs:element name="pubDate" type="xs:integer"minOccurs="1"/>
+                <xs:element name="startPage" type="xs:integer"minOccurs="1"/>
+                <xs:element name="endPage" type="xs:integer"minOccurs="1"/>
+                <xs:element name="journal" type="xs:string"minOccurs="1"/>
+                <xs:element name="volume" type="xs:integer" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="books">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="author" type="xs:string" minOccurs="1"/>
+                <xs:element name="title" type="xs:string" minOccurs="1"/>
+                <xs:element name="pubDate" type="xs:integer" minOccurs="1"/>
+                <xs:element name="publisher" type="xs:string" minOccurs="1"/>
+                <xs:element name="ISBNnumber" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
