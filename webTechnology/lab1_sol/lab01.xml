@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<bibliography>
+  <article>
+    <author>Michael Adams</author>
+    <author>Arthur H. M. ter Hofstede</author>
+    <author>David Edmond</author>
+    <author>Wil M. P. van der Aalst</author>
+    <title>Worklets: A service-oriented implementation of dynamic flexibility in workflows</title>
+    <year>2004</year>
+    <startpage>381</startpage>
+    <endpage>401</endpage>
+    <journal>Lecture Notes in Computer Science</journal>
+    <publisher>Springer</publisher>
+  </article>
+
+
+
+  <article>
+    <author>G. Alonso</author>
+    <author>H. Boley</author>
+    <author>H. Kuno</author>
+    <author>V. Machiraju</author>
+    <title>Web Service: A Dummy Example</title>
+    <year>1985</year>
+    <startpage>381</startpage>
+    <endpage>401</endpage>
+    <journal>Lecture Notes in Computer Science</journal>
+    <publisher>Springer</publisher>
+  </article>
+
+
+  <book>
+    <author>G. Alonso</author>
+    <author>F. Casati</author>
+    <author>H. Kuno</author>
+    <author>V. Machiraju</author>
+    <title>Web Service: Concepts, Architecture and Applications</title>
+    <year>2001</year>
+    <publisher>Springer</publisher>
+  </book>
+
+
+  <article>
+    <author>H. Boley</author>
+    <author>S. Tabet</author>
+    <author>G. Wagner</author>
+    <author>Wil M. P. van der Aalst</author>
+    <title>Design rationale for ruleml: A markup language for semantic web rules</title>
+    <year>2001</year>
+    <startpage>381</startpage>
+    <endpage>401</endpage>
+    <journal>SWWWS</journal>
+  </article>
+
+  <unpubwork>
+    <author>M. G. Buscemi</author>
+    <author>L. Ferrari</author>
+    <author>C. Moiso</author>
+    <author>U. Montanari</author>    
+    <title>Constraint-based policy negociation and enforcement for telco services</title>
+    <year>2007</year>
+  </unpubwork>
+
+  <website>
+    <url>http://www.w3.org/Submission/WS‐Policy/</url>
+    <date>2006-04-10</date>  
+    <author>J. Schlimmer</author>   
+    <title>Web services policy 1.2 – framework (WS‐Policy).</title>
+  </website>
+
+  <website>
+    <url>http://www.google.be</url>
+    <date>2006-04-15</date>  
+    <author>H. Boley</author>   
+    <title>A website without year.</title>
+  </website>
+
+
+  <article>
+    <author>F. Kamoun</author>
+    <title>A roadmap towards the convergence of business process management and service oriented architecture</title>
+    <year>2007</year>
+    <startpage>8</startpage>
+    <endpage>14</endpage>
+    <journal>Ubiquity</journal>
+    <publisher>ACM Press</publisher>
+  </article>
+
+
+</bibliography>
+
