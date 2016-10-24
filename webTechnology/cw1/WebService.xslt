@@ -22,17 +22,10 @@
                                 <xsl:value-of select="return"/>
                             </td>
                             <td>
-                                <!--
-                                <xsl:for-each select="./">
-                                    <xsl:value-of select="arguments/parameter[@type]"/>:
-                                    <xsl:value-of select="arguments/parameter/@type"/>
+                                <xsl:for-each select="./arguments/parameter">
+                                    <xsl:value-of select="."/>:
+                                    <xsl:value-of select="./@type"/>,   
                                 </xsl:for-each>
-                                -->
-                                <xsl:value-of select="arguments/parameter[@type]"/>:
-                                <xsl:value-of select="arguments/parameter/@type"/>,
-                                <xsl:value-of select="arguments/parameter[@type]"/>:
-                                <xsl:value-of select="arguments/parameter/@type"/>
-
                             </td>
                         </tr>
                     </xsl:for-each>
@@ -41,4 +34,3 @@
         </html>
     </xsl:template>
 </xsl:stylesheet>
-
