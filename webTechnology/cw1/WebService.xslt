@@ -24,7 +24,9 @@
                             <td>
                                 <xsl:for-each select="./arguments/parameter">
                                     <xsl:value-of select="."/>:
-                                    <xsl:value-of select="./@type"/>,   
+                                    <xsl:value-of select="./@type"/>
+                                    <xsl:if test="not(position()=last())">,   
+                                    </xsl:if>   
                                 </xsl:for-each>
                             </td>
                         </tr>
