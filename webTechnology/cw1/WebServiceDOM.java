@@ -1,56 +1,111 @@
 import org.apache.xerces.parsers.DOMParser;
-import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class WebServiceDOM {
+    List abstractMethodList;
+    Document doc;
 
-    static AbstractMethod abstractMethod = new AbstractMethod();
-    static ArrayList<AbstractMethod> abstractMethodArrayList = new ArrayList<>();
-    static Argument argument = new Argument();
-    static ArrayList<Argument> argumentArrayList = new ArrayList<>();
-
-    public static class Argument{
-        public String getParameterType() {
-            return parameterType;
-        }
-
-        public void setParameterType(String parameterType) {
-            this.parameterType = parameterType;
-        }
-
-        public String getParameterName() {
-            return parameterName;
-        }
-
-        public void setParameterName(String parameterName) {
-            this.parameterName = parameterName;
-        }
-
-        @Override
-                public String toString(){
-            return getParameterType() +" " + getParameterName();
-        }
-
-        String parameterType;
-        String parameterName;
+    public WebServiceDOM(){
+        abstractMethodList = new ArrayList();
     }
 
-    public static class AbstractMethod{
+    public static void main(String[] args){
+        WebServiceDOM webServiceDOM = new WebServiceDOM();
+        webServiceDOM.parXMLFile();
+    }
 
-        String methodName;
-        String modifier;
-        String returnType;
+    public void parXMLFile(){
+        try{
+            DOMParser parser = new DOMParser();
+            parser.parse("WebService.xml");
+            doc = parser.getDocument();
+            traverse_tree(doc);
+            printInterface();
 
-        public ArrayList<Argument> getArguments() {
-            return arguments;
+        }
+        catch (Exception e){
+            e.printStackTrace(System.err);
+        }
+    }
+
+    public void printInterface(){
+        Iterator iterator = abstractMethodList.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next().toString());
+        }
+    }
+
+    public void traverse_tree(Node node){
+        //get the root element
+        Element docEle = doc.getDocumentElement();
+
+        //get a nodeList of <abstract_method> elements
+        NodeList nodeList = docEle.getElementsByTagName("abstract_method");
+        if(nodeList != null && nodeList.getLength()>0){
+            for(int i = 0;i<nodeList.getLength();i++){
+                //get the abstractMethodList element
+                Element element = (Element)nodeList.item(i);
+
+                //get the abstract_method object
+                AbstractMethod abstractMeth = getAbstractMethod(element);
+
+                //add to list
+                abstractMethodList.add(abstractMeth);
+            }
+        }
+    }
+
+    public String getTextValue (Element element, String tagName) {
+        String textVal = null;
+        NodeList nodeList = element.getElementsByTagName(tagName);
+        if(nodeList != null && nodeList.getLength() > 0){
+            Element element1 = (Element)nodeList.item(0);
+            textVal = element1.getFirstChild().getNodeValue();
         }
 
-        public void setArguments(ArrayList<Argument> arguments) {
-            this.arguments = arguments;
+        return textVal;
+    }
+
+    public AbstractMethod getAbstractMethod(Element element){
+
+        //for each <abstract_method> element get text or int values of
+        //name, modifier, return type
+        String modifier = getTextValue(element,"modifier");
+        String returnType = getTextValue(element,"return");
+        String menthodName = element.getAttribute("name");
+
+        //create a new AbstractMethod with the value read form the xml nodes
+        AbstractMethod abstractMethod = new AbstractMethod(menthodName,modifier,returnType);
+
+        return abstractMethod;
+    }
+
+    public class AbstractMethod
+    {
+        private String name;
+        private String modifier;
+        private String returnType;
+
+        public AbstractMethod(String name,String modifier,String returnType){
+            this.name = name;
+            this.modifier = modifier;
+            this.returnType = returnType;
         }
 
-        ArrayList<Argument> arguments;
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
 
         public String getModifier() {
             return modifier;
@@ -60,7 +115,6 @@ public class WebServiceDOM {
             this.modifier = modifier;
         }
 
-
         public String getReturnType() {
             return returnType;
         }
@@ -69,116 +123,14 @@ public class WebServiceDOM {
             this.returnType = returnType;
         }
 
-        public String getMethodName() {
-            return methodName;
-        }
-
-        public void setMethodName(String methodName) {
-            this.methodName = methodName;
-        }
-
-        @Override
         public String toString(){
-            return getModifier()+" "+getReturnType()+" "+getMethodName()+" "+getArguments();
+            StringBuffer sb = new StringBuffer();
+            sb.append(getModifier()+" ");
+            sb.append(getReturnType()+" ");
+            sb.append(getName());
+
+            return sb.toString();
         }
 
-
-    }
-
-    static int numberOfAbstractMethod = 0;
-    public static void main(String[] args){
-        try{
-            DOMParser parser = new DOMParser();
-            parser.parse("WebService.xml");
-            Document doc = parser.getDocument();
-            traverse_tree(doc);
-//            printInterface();
-
-        }
-        catch (Exception e){
-            e.printStackTrace(System.err);
-        }
-    }
-
-    public static void traverse_tree(Node node)
-    {
-        if(node == null) {return;}
-        int type = node.getNodeType();
-        switch (type){
-            case Node.DOCUMENT_NODE: {
-                traverse_tree(((Document)node).getDocumentElement());
-                break;
-            }
-            case Node.ELEMENT_NODE: {
-                handleElement(node);
-                break;
-            }
-            case Node.ATTRIBUTE_NODE: {
-                handleAttribute(node);
-                break;
-            }
-        }
-    }
-
-    private static void handleAttribute(Node node){
-        String nodeName = node.getLocalName();
-        String nodeValue = node.getTextContent();
-
-        if(nodeName.equals("parameter")){
-            String attributeNodeValue =
-                    node.getAttributes().getNamedItem("type").getNodeValue();
-            argument.setParameterType(attributeNodeValue);
-            argument.setParameterName(nodeValue);
-        }
-        if(nodeName.equals("abstract_method")){
-            String methodName = node.getAttributes().getNamedItem("name").getNodeValue();
-            abstractMethod.setMethodName(methodName);
-
-        }
-    }
-
-    private static void handleElement(Node node){
-        String elementName = node.getLocalName();
-        String nodeValue = node.getTextContent();
-
-        if(elementName.equals("abstract_method")){
-            handleAttribute(node);
-            numberOfAbstractMethod++;
-        }
-        else if(elementName.equals("modifier")){
-
-            abstractMethod.setModifier(nodeValue);
-        }
-        else if(elementName.equals("return")){
-            abstractMethod.setReturnType(nodeValue);
-            abstractMethodArrayList.add(abstractMethod);
-            printInterface();
-        }
-        else if(elementName.equals("parameter")){
-            handleAttribute(node);
-            argumentArrayList.add(argument);
-            abstractMethod.setArguments(argumentArrayList);
-        }
-
-//        if(abstractMethod.getModifier()!=null && abstractMethod.getReturnType()!=null && abstractMethod.getMethodName()!= null){
-//            abstractMethodArrayList.add(abstractMethod);
-//        }
-        NodeList childNodes = node.getChildNodes();
-
-        if(childNodes != null){
-            int length = childNodes.getLength();
-            for (int loopIndex = 0; loopIndex < length; loopIndex++){
-                traverse_tree(childNodes.item(loopIndex));
-            }
-        }
-    }
-
-    private static void printInterface(){
-        int size = abstractMethodArrayList.size();
-        System.out.println("size is:"+size);
-        for(AbstractMethod a:abstractMethodArrayList){
-
-            System.out.println(a.toString());
-        }
     }
 }
