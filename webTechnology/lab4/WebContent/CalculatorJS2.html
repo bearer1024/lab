@@ -1,0 +1,55 @@
+<html>
+<head><title>Calculator</title></head>
+<body>
+<style>
+form {
+ width: 500px;
+ overflow:hidden;}
+label {
+ clear: both;
+ float: left;
+ width: 40%;}
+input {
+ float: left;
+ width: 55%;}
+ select {
+ float: left;
+ width: 55%;}
+</style>
+<h3>Calculator</h3>
+<h3>Please enter two integers:</h3>
+<div>
+	<label for="num1">Number1:</label>
+	<input type="TEXT" name="num1" id="num1" onkeyup="check(this)"/><br/>
+	<label for="num2">Number 2:</label>
+	<input type ="TEXT" name="num2" id="num2" onkeyup="check(this)"/><br/>
+	<label for="operator">Operator</label>
+	<select name="operator" id="operator">
+	  <option value="+">+</option>
+	  <option value="-">-</option>
+	  <option value="*">*</option>
+	  <option value="/">/</option>
+	</select>
+	<label for="calculate">Please click</label>
+	<button name="calculate" id="calculate" onclick="calculate()">calculate</button>
+	<label for="result">Result (textfield)</label>
+	<input type="TEXT" name="result" id="result"></input> 
+</div>
+
+Result (div): <div id="result_div"></div>
+
+<script>
+
+function check(element){
+	//....
+}
+
+function calculate(){
+	//....
+}
+
+</script>	
+
+
+</body>
+</html>

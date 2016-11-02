@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Toggle Icon button</title>
+</head>
+<body>
+    <!-- You can download icons from https://material.io/icons/-->
+	<img id="switch" src="../images/on.png"/>
+	
+	<p><button type="button" onclick="toggle(this)">on</button></p>
+	
+<script>
+function toggle(element) {
+	document.getElementById("switch").src="../images/off.png";
+}
+</script>	
+</body>
+</html>
