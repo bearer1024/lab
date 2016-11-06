@@ -2,17 +2,20 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.InsnList;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.analysis.AnalyzerException;
 
-import util.DominanceTreeGenerator;
 import util.cfg.CFGExtractor;
 import util.cfg.Graph;
 import util.cfg.Node;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * This should be the entry-point of your programming submission.
@@ -22,7 +25,6 @@ import java.util.List;
  */
 public class AssignmentSubmission implements Slicer {
 
-	//Set<Edge>
 	ClassNode targetClassNode;
 	MethodNode targetMethod;
 	Graph cfg;
@@ -81,8 +83,18 @@ public class AssignmentSubmission implements Slicer {
      */
     @Override
     public boolean isDataDepence(AbstractInsnNode a, AbstractInsnNode b) {
-        //REPLACE THIS METHOD BODY WITH YOUR OWN CODE
-        return false;
+		try{
+			ComputeDataDependence computeDataDependence = new ComputeDataDependence(targetClassNode,targetMethod);
+			Graph ddg = computeDataDependence.ComputeDataDependence(a,b);
+			Node nodeA = new Node(a);
+			Node nodeB = new Node(b);
+			Set<Node> nodeSet = ddg.getSuccessors(nodeB);
+			if(nodeSet.contains(nodeA))	return true;
+		}
+		catch (AnalyzerException e){
+			e.printStackTrace();
+		}
+		return false;
     }
 
     /**
@@ -98,41 +110,15 @@ public class AssignmentSubmission implements Slicer {
      */
     @Override
     public boolean isControlDependentUpon(AbstractInsnNode a, AbstractInsnNode b)  {
-    	
-    	//create augmented cfg
-    	Node firstNode = new Node(a);
-    	Node secondNode = new Node(b);
-    	Node startNode = new Node("Start"); 
-    	Node entryNode = cfg.getEntry();
-    	Node exitNode = cfg.getExit();
-    	
-    	cfg.addNode(startNode);
-    	cfg.addEdge(startNode,entryNode);
-    	cfg.addEdge(startNode,exitNode);
-
-    	//compute post-dominator tree
-        try {
-			DominanceTreeGenerator dominanceTreeGenerator = new DominanceTreeGenerator(cfg);
-			Graph postDominatorTreeGraph = dominanceTreeGenerator.postDominatorTree();
 
 
-			//compute control dependence graph
-			//if(postDominatorTreeGraph.
-		}
-		catch (AnalyzerException analyzerException){
-			analyzerException.printStackTrace();
-		}
-		catch (IOException ioe){
-			ioe.printStackTrace();
-		}
-
-
-
-
-
-
-    	
-        return false;
+		ComputeControlDepence computeControlDepence = new ComputeControlDepence(cfg);
+		Graph cdg = computeControlDepence.ComputeControlDenpence();
+		Node nodeA = new Node(a);
+		Node nodeB = new Node(b);
+		Set<Node> nodeSet = cdg.getSuccessors(nodeB);
+		if(nodeSet.contains(nodeA))	return true;
+		else return false;
     }
 
 
@@ -143,8 +129,34 @@ public class AssignmentSubmission implements Slicer {
      */
     @Override
     public List<AbstractInsnNode> backwardSlice(AbstractInsnNode criterion) {
-        //REPLACE THIS METHOD BODY WITH YOUR OWN CODE
-    	
+
+        Graph graph = new Graph();
+		ComputeControlDepence computeControlDepence = new ComputeControlDepence(cfg);
+		Graph cdg = computeControlDepence.ComputeControlDenpence();
+		try {
+			ComputeDataDependence computeDataDependence = new ComputeDataDependence(targetClassNode,targetMethod);
+			Graph ddg = computeDataDependence.buildGraph(targetClassNode,targetMethod);
+
+            //add nodes form control dependence graph and data dependence graph
+            Set<Node> nodesInCdg = cdg.getNodes();
+			Set<Node> nodesInDdg = ddg.getNodes();
+            nodesInCdg.addAll(nodesInDdg);
+
+			Graph programGraph = new Graph();
+			for(Iterator<Node> iterator = nodesInCdg.iterator();iterator.hasNext();){
+				programGraph.addNode(iterator.next());
+			}
+
+			System.out.println("program dependence graph is:"+programGraph.toString());
+
+			//add edges
+
+		}
+		catch (AnalyzerException e){
+			e.printStackTrace();
+		}
+
+
         return null;
     }
 }

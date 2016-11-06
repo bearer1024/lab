@@ -10,6 +10,8 @@ import org.junit.Test;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.analysis.AnalyzerException;
+import util.cfg.CFGExtractor;
 
 public class AssignmentSubmissionTests {
 
@@ -29,8 +31,10 @@ public class AssignmentSubmissionTests {
 	}
 
 	@Test
-	public void testControlDependence() {
+	public void testControlDependence() throws AnalyzerException{
 		System.out.println(targetMethod.instructions.size());
+		ComputeControlDepence computeControlDepence = new ComputeControlDepence(CFGExtractor.getCFG(targetClass.name,targetMethod));
+		testSubmission.isControlDependentUpon(null,null);
 	}
 
 }
