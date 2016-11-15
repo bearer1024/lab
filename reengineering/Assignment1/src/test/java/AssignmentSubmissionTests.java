@@ -33,8 +33,10 @@ public class AssignmentSubmissionTests {
 	@Test
 	public void testControlDependence() throws AnalyzerException{
 		System.out.println(targetMethod.instructions.size());
-		ComputeControlDepence computeControlDepence = new ComputeControlDepence(CFGExtractor.getCFG(targetClass.name,targetMethod));
+		ControlDependenceComputation controlDependenceComputation= new ControlDependenceComputation(CFGExtractor.getCFG(targetClass.name,targetMethod));
 		testSubmission.isControlDependentUpon(null,null);
+		testSubmission.isDataDepence(null,null);
+		//testSubmission.backwardSlice(null);
 	}
 
 }

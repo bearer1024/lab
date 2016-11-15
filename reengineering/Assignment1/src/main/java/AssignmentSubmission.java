@@ -10,12 +10,10 @@ import util.cfg.CFGExtractor;
 import util.cfg.Graph;
 import util.cfg.Node;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * This should be the entry-point of your programming submission.
@@ -84,12 +82,20 @@ public class AssignmentSubmission implements Slicer {
     @Override
     public boolean isDataDepence(AbstractInsnNode a, AbstractInsnNode b) {
 		try{
-			ComputeDataDependence computeDataDependence = new ComputeDataDependence(targetClassNode,targetMethod);
-			Graph ddg = computeDataDependence.ComputeDataDependence(a,b);
-			Node nodeA = new Node(a);
-			Node nodeB = new Node(b);
-			Set<Node> nodeSet = ddg.getSuccessors(nodeB);
-			if(nodeSet.contains(nodeA))	return true;
+			//generate data dependence graph
+			DataDependenceComputation dataDependenceComputation = new DataDependenceComputation(targetClassNode,targetMethod);
+			Graph ddg = dataDependenceComputation.buildGraph();
+			Node na= new Node(a);
+			Node nb= new Node(b);
+			//get all nodes from data dependence graph
+			Set<Node> nodes= ddg.getSuccessors(nb);
+			//Judge if na and nb has an edge in data dependence graph
+			if(nodes.contains(na)){
+				Set<Node> nodeSet = ddg.getPredecessors(na);
+				if(nodeSet.contains(nb)){
+					return true;
+				}
+			}
 		}
 		catch (AnalyzerException e){
 			e.printStackTrace();
@@ -111,13 +117,17 @@ public class AssignmentSubmission implements Slicer {
     @Override
     public boolean isControlDependentUpon(AbstractInsnNode a, AbstractInsnNode b)  {
 
-
-		ComputeControlDepence computeControlDepence = new ComputeControlDepence(cfg);
-		Graph cdg = computeControlDepence.ComputeControlDenpence();
-		Node nodeA = new Node(a);
-		Node nodeB = new Node(b);
-		Set<Node> nodeSet = cdg.getSuccessors(nodeB);
-		if(nodeSet.contains(nodeA))	return true;
+		//use ControlDependenceComputation class to judge control dependence
+		ControlDependenceComputation controlDependenceComputation= new ControlDependenceComputation(cfg);
+		//generate control dependence graph
+		Graph cdg = controlDependenceComputation.ComputeControlDenpence();
+		Node na= new Node(a);
+		Node nb = new Node(b);
+		//get all successors of node nb
+		Set<Node> nodeSet = cdg.getSuccessors(nb);
+		//to judge whether it has an edge in graph or not
+		if(nodeSet.contains(na))
+			return true;
 		else return false;
     }
 
@@ -130,26 +140,26 @@ public class AssignmentSubmission implements Slicer {
     @Override
     public List<AbstractInsnNode> backwardSlice(AbstractInsnNode criterion) {
 
-        Graph graph = new Graph();
-		ComputeControlDepence computeControlDepence = new ComputeControlDepence(cfg);
-		Graph cdg = computeControlDepence.ComputeControlDenpence();
+		//get control dependence graph
+		ControlDependenceComputation controlDependenceComputation= new ControlDependenceComputation(cfg);
+		Graph cdg = controlDependenceComputation.ComputeControlDenpence();
 		try {
-			ComputeDataDependence computeDataDependence = new ComputeDataDependence(targetClassNode,targetMethod);
-			Graph ddg = computeDataDependence.buildGraph(targetClassNode,targetMethod);
+			DataDependenceComputation dataDependenceComputation = new DataDependenceComputation(targetClassNode,targetMethod);
+			Graph ddg = dataDependenceComputation.buildGraph();
 
-            //add nodes form control dependence graph and data dependence graph
-            Set<Node> nodesInCdg = cdg.getNodes();
-			Set<Node> nodesInDdg = ddg.getNodes();
-            nodesInCdg.addAll(nodesInDdg);
-
+            //merge nodes form control dependence graph and data dependence graph
+            Set<Node> nodesFromCdg = cdg.getNodes();
+			Set<Node> nodesFromDdg = ddg.getNodes();
+			Set<Node> nodesToBuildPDG = Collections.emptySet();
+			nodesToBuildPDG.addAll(nodesFromCdg);
+			nodesToBuildPDG.addAll(nodesFromDdg);
 			Graph programGraph = new Graph();
-			for(Iterator<Node> iterator = nodesInCdg.iterator();iterator.hasNext();){
+			for(Iterator<Node> iterator = nodesToBuildPDG.iterator();iterator.hasNext();){
 				programGraph.addNode(iterator.next());
 			}
+			System.out.println("-----------------------Program dependence graph------------------");
+			System.out.println(programGraph.toString());
 
-			System.out.println("program dependence graph is:"+programGraph.toString());
-
-			//add edges
 
 		}
 		catch (AnalyzerException e){
