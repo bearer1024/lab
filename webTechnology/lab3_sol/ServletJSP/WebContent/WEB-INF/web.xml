@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>ServletJSP</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+ 
+<servlet>
+  <servlet-name>HelloWorld</servlet-name>
+  <servlet-class>uk.ac.le.cs.CO3098.HelloWorldServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+ <servlet-name>HelloWorld</servlet-name>
+ <url-pattern>/servlets/HelloWorld</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+  <servlet-name>CalculatorServlet</servlet-name>
+  <servlet-class>uk.ac.le.cs.CO3098.CalculatorServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+ <servlet-name>CalculatorServlet</servlet-name>
+ <url-pattern>/servlets/CalculatorServlet</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+  <servlet-name>GetStudentInfo</servlet-name>
+  <servlet-class>uk.ac.le.cs.CO3098.GetStudentInfo</servlet-class>
+</servlet>
+<servlet-mapping>
+ <servlet-name>GetStudentInfo</servlet-name>
+ <url-pattern>/servlets/GetStudentInfo</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+  <servlet-name>Login</servlet-name>
+  <servlet-class>uk.ac.le.cs.CO3098.Login</servlet-class>
+</servlet>
+
+<servlet-mapping>
+ <servlet-name>Login</servlet-name>
+ <url-pattern>/servlets/Login</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>Logout</servlet-name>
+  <servlet-class>uk.ac.le.cs.CO3098.Logout</servlet-class>
+</servlet>
+
+<servlet-mapping>
+ <servlet-name>Logout</servlet-name>
+ <url-pattern>/servlets/Logout</url-pattern>
+</servlet-mapping>
+
+
+</web-app>

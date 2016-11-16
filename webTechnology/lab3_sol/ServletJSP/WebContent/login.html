@@ -1,0 +1,27 @@
+<html>
+<head><title>Login</title></head>
+<body>
+<style>
+form {
+ width: 300px;
+ overflow:hidden;}
+label {
+ clear: both;
+ float: left;
+ width: 40%;}
+input {
+ float: left;
+ width: 55%;}
+</style>
+<h1>Login</h1>
+<form action="./servlets/Login" method="GET">
+<div>
+	<label for="name">Username:</label>
+	<input type="text" name="name"/><br/>
+	<label for="pass">Password:</label>
+	<input type ="password" name="pass"/><br/>
+	<label for="submit">Login</label>
+	<input type="submit" name="submit" value="Login">
+</div>
+</form>
+</body></html>
