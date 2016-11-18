@@ -54,10 +54,7 @@ public int createUser(String userName, String userEmail, String userFullName,
 			pStmt.setString(4, dateOfBirth);
 			pStmt.setString(5, homeAddress);
 			pStmt.setString(6, passwordHash);
-			System.out.println("iam bullshit"+securityCode);
-
 			pStmt.setString(7, securityCode);
-			System.out.println("iam bullshit"+securityCode);
 			result = pStmt.executeUpdate();
 		} catch (Exception e) {
 			System.err.println(e.getMessage());

@@ -28,8 +28,7 @@ public class RegisterServlet extends HttpServlet {
 		switch(codeStatus){
 		
 		case 1:
-			System.out.println(securityCode);
-			int result = userDAO.createUser(userName, userEmail, userFullName, dateOfBirth,homeAddress,securityCode,password);
+			int result = userDAO.createUser(userName, userEmail, userFullName, dateOfBirth,homeAddress,password,securityCode);
 			if (result == 1) {
 				response.sendRedirect("success.jsp");
 			}
