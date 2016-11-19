@@ -1,6 +1,7 @@
 package uk.ac.le.cs.CO3098;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,23 +25,39 @@ public class RegisterServlet extends HttpServlet {
 		String password = request.getParameter("password");
 
 		UserDAO userDAO = new UserDAO();
-		int codeStatus = userDAO.checkCodeStatus(securityCode);
-		switch(codeStatus){
 		
-		case 1:
-			int result = userDAO.createUser(userName, userEmail, userFullName, dateOfBirth,homeAddress,password,securityCode);
-			if (result == 1) {
-				response.sendRedirect("success.jsp");
+		if(!userDAO.emailIsRegistered(userEmail)){
+			int codeStatus = userDAO.checkCodeStatus(securityCode);
+			switch(codeStatus){
+			
+			case 1:
+				int result = userDAO.createUser(userName, userEmail, userFullName, dateOfBirth,homeAddress,password,securityCode);
+				if (result == 1) {
+					response.setContentType("text/html");
+					PrintWriter out = response.getWriter();
+					String loginUrl = "../login.html";
+					out.println("<html><head><title>register successful" +  
+					     "</title></head>"); 
+					out.println("<body><h1>register successful</h1>");
+					out.println("<p><b><a href='"+loginUrl+"'>");
+					out.println("clik here to login<a></b></p>");
+					out.println("</body></html>"); 
+//					response.sendRedirect("../login.html");
+				}
+				break;
+			case 2:
+				response.sendRedirect("../errorForRegister.jsp?errorid=2");
+	//			System.out.println("this code is used");
+				break;
+			case 3:
+				response.sendRedirect("../errorForRegister.jsp?errorid=3");
+	//			System.out.println("this code doesn't exist");
+				break;
 			}
-			break;
-		case 2:
-			System.out.println("this code is used");
-			break;
-		case 3:
-			System.out.println("this code doesn't exist");
-			break;
+		}else{
+				response.sendRedirect("../errorForRegister.jsp?errorid=1");
+	//			System.out.println("this email has been registered");
 		}
-
 		
 	}
 }

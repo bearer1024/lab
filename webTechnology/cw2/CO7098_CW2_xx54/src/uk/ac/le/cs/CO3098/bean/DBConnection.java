@@ -10,7 +10,6 @@ public static Connection getConnection() {
 	if (connection != null)
 		return connection;
 	else {
-		// database URL
 		try 
 		{  
 		final String host = "localhost";
@@ -21,7 +20,6 @@ public static Connection getConnection() {
 		String conn_string="jdbc:mysql://"+host+"/"+database;
 		connection = DriverManager.getConnection(conn_string,username,password);
 		return connection;
-		// set the url, username and password for the database
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

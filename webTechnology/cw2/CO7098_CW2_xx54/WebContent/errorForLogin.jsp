@@ -21,9 +21,11 @@ String errorMsg="Access denied";
 String errorid=request.getParameter("errorid");
 if(errorid!=null){
 	if(errorid.equals("1")){
-		errorMsg+= " - Wrong password.";
+		errorMsg+= " - This email is already used";
 	}else if(errorid.equals("2")){
-		errorMsg+=" - Session expired.";
+		errorMsg+= " - This code is already used.";
+	}else if(errorid.equals("3")){
+		errorMsg+=" - This code is invalid.";
 	}else{
 		errorMsg+=" - You are not authorized to access this page.";
 	}
