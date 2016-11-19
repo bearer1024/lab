@@ -12,9 +12,12 @@ public static Connection getConnection() {
 	else {
 		try 
 		{  
+//		final String host = "mysql.mcscw3.le.ac.uk";
 		final String host = "localhost";
-		final String database = "test";
+		final String database = "xx54";
+//		final String username = "xx54";
 		final String username = "root";
+//		final String password = "elereivu";
 		final String password = "root";
 		Class.forName("com.mysql.jdbc.Driver");
 		String conn_string="jdbc:mysql://"+host+"/"+database;

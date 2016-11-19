@@ -12,6 +12,7 @@ import uk.ac.le.cs.CO3098.bean.UserDAO;
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -20,12 +21,9 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
-		System.out.println("in servlet userName is:"); 
 		UserDAO userDAO = new UserDAO();
 		User user = null;
 		user = userDAO.verifyUser(email, password);
-		System.out.println("uiaslkdfalkfserName is:"); 
-//		System.out.println("in servlet userName is:"+ user.getUserName());
 		if (user == null) {
 			error = "Invalid Email or password";
 			session.setAttribute("error", error);

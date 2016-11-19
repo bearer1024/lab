@@ -9,20 +9,29 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-    <servlet>
-  <servlet-name>LoginServlet</servlet-name>
-  <servlet-class>uk.ac.le.cs.CO3098.LoginServlet</servlet-class>
-</servlet>
-<servlet-mapping>
- <servlet-name>LoginServlet</servlet-name>
- <url-pattern>/servlets/LoginServlet</url-pattern>
-</servlet-mapping>
   <servlet>
-  <servlet-name>RegisterServlet</servlet-name>
-  <servlet-class>uk.ac.le.cs.CO3098.RegisterServlet</servlet-class>
-</servlet>
-<servlet-mapping>
- <servlet-name>RegisterServlet</servlet-name>
- <url-pattern>/servlets/RegisterServlet</url-pattern>
-</servlet-mapping>
+    <servlet-name>LoginForAdminServlet</servlet-name>
+    <servlet-class>uk.ac.le.cs.CO3098.LoginForAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginForAdminServlet</servlet-name>
+    <url-pattern>/servlets/LoginForAdminServlet</url-pattern>
+  </servlet-mapping>
+  
+<servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>uk.ac.le.cs.CO3098.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/servlets/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>uk.ac.le.cs.CO3098.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/servlets/RegisterServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

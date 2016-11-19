@@ -32,7 +32,7 @@ public class RegisterServlet extends HttpServlet {
 			
 			case 1:
 				int result = userDAO.createUser(userName, userEmail, userFullName, dateOfBirth,homeAddress,password,securityCode);
-				if (result == 1) {
+				if (result == 1 && userDAO.markCodeBeUsed(securityCode)) {
 					response.setContentType("text/html");
 					PrintWriter out = response.getWriter();
 					String loginUrl = "../login.html";
@@ -53,6 +53,9 @@ public class RegisterServlet extends HttpServlet {
 				response.sendRedirect("../errorForRegister.jsp?errorid=3");
 	//			System.out.println("this code doesn't exist");
 				break;
+			default:
+				PrintWriter out = response.getWriter();
+				out.println("unexcepted error 10001 in register");
 			}
 		}else{
 				response.sendRedirect("../errorForRegister.jsp?errorid=1");

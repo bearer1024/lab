@@ -3,14 +3,11 @@
 HttpSession se=request.getSession();
 /* User user=null; */
 String userName;
-System.out.println("shit");
 User user = null;
 if(se.getAttribute("User")!=null){
 	user=(User)se.getAttribute("User");
-System.out.println("shit1");
 }else{
 	response.sendRedirect("errorForLogin.jsp");
-System.out.println("shit2");
 }
 if(user!=null){
 %>
@@ -32,7 +29,7 @@ input {
 <h1>Hello</h1>
 <div>
 Welcome, <%= user.getUserName()%>! <br/>
-<a href="voting.jsp">go to vote </a>
+<p><a href="voting.jsp">go to vote </a></p>
 <a href="./servlets/Logout">Logout</a>
 </div>
 </body></html>

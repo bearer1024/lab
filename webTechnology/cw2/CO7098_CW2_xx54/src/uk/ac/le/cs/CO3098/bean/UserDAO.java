@@ -21,6 +21,7 @@ public class UserDAO {
 	private final int CODENOTEXIST = 3;
 
 	private String SQL_SELECT = "SELECT * FROM user WHERE userEmail = ? AND password = ?";
+	private String SQL_UPDATE = "update SECURITY_CODE set CODE = ? , USED = ? where CODE = ?";
 	private String SQL_INSERT = "INSERT INTO USER (userName,userEmail,userFullName,dateOfBirth,homeAddress,password,securityCode) "
 			+ "VALUES (?,?,?,?,?,?,?)";
 
@@ -44,7 +45,6 @@ public class UserDAO {
 				String homeAddress = rs.getString("homeAddress");
 				String userPassword = rs.getString("password");
 				String securityCode = rs.getString("securityCode");
-				System.out.println("userName is"+userName+"userEmail is:"+ userEmail);
 				user = new User(userName,userEmail,userFullName,dateOfBirth,homeAddress,userPassword,securityCode);
 			}
 			}
@@ -116,6 +116,23 @@ public int createUser(String userName, String userEmail, String userFullName,
 			e.printStackTrace();
 		}
 		return CODENOTEXIST;
+	}
+	
+	public boolean markCodeBeUsed(String code){
+			try {
+				pStmt = dbConnection.prepareStatement(SQL_UPDATE);
+				pStmt.setString(1, code);
+				System.out.println("show me your code    "+code);
+				pStmt.setInt(2, 1);	
+				pStmt.setString(3, code);
+				int result = pStmt.executeUpdate();
+				if(result==1){
+					return true;
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		return false;
 	}
 	
 }

@@ -1,0 +1,27 @@
+<html>
+<head><title>Login</title></head>
+<body>
+<style>
+form {
+ width: 300px;
+ overflow:hidden;}
+label {
+ clear: both;
+ float: left;
+ width: 40%;}
+input {
+ float: left;
+ width: 55%;}
+</style>
+<h1>Administrator Login Page</h1>
+<form action="./servlets/LoginForAdminServlet" method="POST">
+<div>
+	<label for="name">name:</label>
+	<input type="text" name="name"/><br/>
+	<label for="pass">Password:</label>
+	<input type ="password" name="password"/><br/>
+	<label for="submit">Login</label>
+	<input type="submit" name="submit" value="Login">
+</div>
+</form>
+</body></html>
