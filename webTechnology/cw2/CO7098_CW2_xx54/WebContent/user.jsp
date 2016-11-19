@@ -1,13 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="uk.ac.le.cs.CO3098.bean.*"%><% 
 HttpSession se=request.getSession();
-User u=null;
+/* User user=null; */
+String userName;
+System.out.println("shit");
+User user = null;
 if(se.getAttribute("User")!=null){
- 	u=(User)se.getAttribute("User");
+	user=(User)se.getAttribute("User");
+System.out.println("shit1");
 }else{
-	response.sendRedirect("error.jsp?errorid=2");
+	response.sendRedirect("errorForLogin.jsp");
+System.out.println("shit2");
 }
-if(u!=null){
+if(user!=null){
 %>
 <html>
 <head><title>User page</title></head>
@@ -26,7 +31,8 @@ input {
 </style>
 <h1>Hello</h1>
 <div>
-Welcome, <%= u.getFullname() %>! <br/>
+Welcome, <%= user.getUserName()%>! <br/>
+<a href="voting.jsp">go to vote </a>
 <a href="./servlets/Logout">Logout</a>
 </div>
 </body></html>

@@ -1,5 +1,4 @@
-package uk.ac.le.cs.CO3098;
-
+package uk.ac.le.cs.CO3098; 
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -8,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import uk.ac.le.cs.CO3098.bean.User;
 import uk.ac.le.cs.CO3098.bean.UserDAO;
 
 public class LoginServlet extends HttpServlet {
@@ -20,17 +20,19 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
+		System.out.println("in servlet userName is:"); 
 		UserDAO userDAO = new UserDAO();
-
-		String userName = userDAO.verifyUser(email, password);
-
-		if (userName == null) {
+		User user = null;
+		user = userDAO.verifyUser(email, password);
+		System.out.println("uiaslkdfalkfserName is:"); 
+//		System.out.println("in servlet userName is:"+ user.getUserName());
+		if (user == null) {
 			error = "Invalid Email or password";
 			session.setAttribute("error", error);
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("../errorForLogin.jsp?errorid=1");
 		} else {
-			session.setAttribute("user", userName);
-			response.sendRedirect("welcome.jsp");
+			session.setAttribute("User", user);
+			response.sendRedirect("../user.jsp");
 		}
 	}
 

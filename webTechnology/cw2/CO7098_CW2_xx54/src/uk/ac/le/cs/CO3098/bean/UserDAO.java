@@ -20,7 +20,7 @@ public class UserDAO {
 	private final int CODEISNOTNEW = 2;
 	private final int CODENOTEXIST = 3;
 
-	private String SQL_SELECT = "SELECT userName FROM user WHERE userEmail = ? AND password = ?";
+	private String SQL_SELECT = "SELECT * FROM user WHERE userEmail = ? AND password = ?";
 	private String SQL_INSERT = "INSERT INTO USER (userName,userEmail,userFullName,dateOfBirth,homeAddress,password,securityCode) "
 			+ "VALUES (?,?,?,?,?,?,?)";
 
@@ -28,20 +28,30 @@ public class UserDAO {
 		dbConnection = DBConnection.getConnection();
 	}
 
-	public String verifyUser(String email, String password) {
-		String userName = null;
+	public  User verifyUser(String email, String password) {
+		User user = null;
 		try {
 			pStmt = dbConnection.prepareStatement(SQL_SELECT);
 			pStmt.setString(1, email);
-			pStmt.setString(2, password);
-			ResultSet rs = pStmt.executeQuery();
+			String passwordHash = HashGenerator.getSHA256(password);
+			pStmt.setString(2, passwordHash);
+			try(ResultSet rs = pStmt.executeQuery();){
 			while (rs.next()) {
-				userName = rs.getString("userName");
+				String userName = rs.getString("userName");
+				String userFullName = rs.getString("userFullName");
+				String dateOfBirth = rs.getString("dateOfBirth");
+				String userEmail = rs.getString("userEmail");
+				String homeAddress = rs.getString("homeAddress");
+				String userPassword = rs.getString("password");
+				String securityCode = rs.getString("securityCode");
+				System.out.println("userName is"+userName+"userEmail is:"+ userEmail);
+				user = new User(userName,userEmail,userFullName,dateOfBirth,homeAddress,userPassword,securityCode);
+			}
 			}
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
-		return userName;
+		return user;
 	}
 	
 public int createUser(String userName, String userEmail, String userFullName,
