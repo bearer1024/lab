@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns0="http://service.bpel" xmlns:ns1="http://org.apache.axis2/xsd" targetNamespace="http://service.bpel" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>UpperOperator</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema xmlns:ns="http://service.bpel" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service.bpel">
+      <xs:element name="upper">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="str" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="upperResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="upperRequest">
+    <wsdl:part name="parameters" element="ns0:upper" />
+  </wsdl:message>
+  <wsdl:message name="upperResponse">
+    <wsdl:part name="parameters" element="ns0:upperResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UpperOperatorPortType">
+    <wsdl:operation name="upper">
+      <wsdl:input wsaw:Action="urn:upper" message="ns0:upperRequest" />
+      <wsdl:output wsaw:Action="urn:upperResponse" message="ns0:upperResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UpperOperatorSOAP11Binding" type="ns0:UpperOperatorPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="upper">
+      <soap:operation soapAction="urn:upper" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UpperOperatorSOAP12Binding" type="ns0:UpperOperatorPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="upper">
+      <soap12:operation soapAction="urn:upper" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UpperOperatorHttpBinding" type="ns0:UpperOperatorPortType">
+    <http:binding verb="POST" />
+    <wsdl:operation name="upper">
+      <http:operation location="UpperOperator/upper" />
+      <wsdl:input>
+        <mime:content part="upper" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="upper" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UpperOperator">
+    <wsdl:port name="UpperOperatorSOAP11port_http" binding="ns0:UpperOperatorSOAP11Binding">
+      <soap:address location="https://campus.cs.le.ac.uk/tyche/axis2/services/UpperOperator" />
+    </wsdl:port>
+    <wsdl:port name="UpperOperatorSOAP12port_http" binding="ns0:UpperOperatorSOAP12Binding">
+      <soap12:address location="https://campus.cs.le.ac.uk/tyche/axis2/services/UpperOperator" />
+    </wsdl:port>
+    <wsdl:port name="UpperOperatorHttpport" binding="ns0:UpperOperatorHttpBinding">
+      <http:address location="https://campus.cs.le.ac.uk/tyche/axis2/services/UpperOperator" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,6 @@
+C:\Users\beare\OneDrive\Documents\Visual Studio 2015\Projects\awtcwQ1\awtcwQ1\bin\Debug\awtcwQ1.exe.config
+C:\Users\beare\OneDrive\Documents\Visual Studio 2015\Projects\awtcwQ1\awtcwQ1\obj\Debug\awtcwQ1.exe
+C:\Users\beare\OneDrive\Documents\Visual Studio 2015\Projects\awtcwQ1\awtcwQ1\obj\Debug\awtcwQ1.pdb
+C:\Users\beare\OneDrive\Documents\Visual Studio 2015\Projects\awtCw1\awtcwQ1\bin\Debug\awtcwQ1.exe.config
+C:\Users\beare\OneDrive\Documents\Visual Studio 2015\Projects\awtCw1\awtcwQ1\obj\Debug\awtcwQ1.exe
+C:\Users\beare\OneDrive\Documents\Visual Studio 2015\Projects\awtCw1\awtcwQ1\obj\Debug\awtcwQ1.pdb

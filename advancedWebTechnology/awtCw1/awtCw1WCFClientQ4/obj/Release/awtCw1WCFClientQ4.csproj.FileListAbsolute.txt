@@ -1,0 +1,6 @@
+C:\Users\beare\OneDrive\Documents\Visual Studio 2015\Projects\awtCw1\awtCw1WCFClientQ4\bin\Release\awtCw1WCFClientQ4.exe.config
+C:\Users\beare\OneDrive\Documents\Visual Studio 2015\Projects\awtCw1\awtCw1WCFClientQ4\bin\Release\awtCw1WCFClientQ4.exe
+C:\Users\beare\OneDrive\Documents\Visual Studio 2015\Projects\awtCw1\awtCw1WCFClientQ4\bin\Release\awtCw1WCFClientQ4.pdb
+C:\Users\beare\OneDrive\Documents\Visual Studio 2015\Projects\awtCw1\awtCw1WCFClientQ4\obj\Release\awtCw1WCFClientQ4.csprojResolveAssemblyReference.cache
+C:\Users\beare\OneDrive\Documents\Visual Studio 2015\Projects\awtCw1\awtCw1WCFClientQ4\obj\Release\awtCw1WCFClientQ4.exe
+C:\Users\beare\OneDrive\Documents\Visual Studio 2015\Projects\awtCw1\awtCw1WCFClientQ4\obj\Release\awtCw1WCFClientQ4.pdb

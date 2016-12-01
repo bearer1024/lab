@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CustomerService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/awtCw1WCF" />
+      <xs:element name="getCustomerByName">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCustomerByNameResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/awtCw1WCF" minOccurs="0" name="getCustomerByNameResult" nillable="true" type="q1:Customer" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addNewCustomer">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="customerId" type="xs:int" />
+            <xs:element minOccurs="0" name="customerName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="customerCardNo" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addNewCustomerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="addNewCustomerResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="countCustomerNumber">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="countCustomerNumberResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="countCustomerNumberResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllCustomers">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllCustomersResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/awtCw1WCF" minOccurs="0" name="getAllCustomersResult" nillable="true" type="q2:ArrayOfCustomer" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/awtCw1WCF" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/awtCw1WCF" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="Customer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerCardNo" type="xs:int" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Customer" nillable="true" type="tns:Customer" />
+      <xs:complexType name="ArrayOfCustomer">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Customer" nillable="true" type="tns:Customer" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCustomer" nillable="true" type="tns:ArrayOfCustomer" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ISCustomerService_getCustomerByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:getCustomerByName" />
+  </wsdl:message>
+  <wsdl:message name="ISCustomerService_getCustomerByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getCustomerByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCustomerService_addNewCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:addNewCustomer" />
+  </wsdl:message>
+  <wsdl:message name="ISCustomerService_addNewCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addNewCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCustomerService_countCustomerNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:countCustomerNumber" />
+  </wsdl:message>
+  <wsdl:message name="ISCustomerService_countCustomerNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:countCustomerNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCustomerService_getAllCustomers_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAllCustomers" />
+  </wsdl:message>
+  <wsdl:message name="ISCustomerService_getAllCustomers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllCustomersResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISCustomerService">
+    <wsdl:operation name="getCustomerByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCustomerService/getCustomerByName" message="tns:ISCustomerService_getCustomerByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCustomerService/getCustomerByNameResponse" message="tns:ISCustomerService_getCustomerByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addNewCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCustomerService/addNewCustomer" message="tns:ISCustomerService_addNewCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCustomerService/addNewCustomerResponse" message="tns:ISCustomerService_addNewCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="countCustomerNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCustomerService/countCustomerNumber" message="tns:ISCustomerService_countCustomerNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCustomerService/countCustomerNumberResponse" message="tns:ISCustomerService_countCustomerNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllCustomers">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCustomerService/getAllCustomers" message="tns:ISCustomerService_getAllCustomers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCustomerService/getAllCustomersResponse" message="tns:ISCustomerService_getAllCustomers_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISCustomerService" type="tns:ISCustomerService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getCustomerByName">
+      <soap:operation soapAction="http://tempuri.org/ISCustomerService/getCustomerByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addNewCustomer">
+      <soap:operation soapAction="http://tempuri.org/ISCustomerService/addNewCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="countCustomerNumber">
+      <soap:operation soapAction="http://tempuri.org/ISCustomerService/countCustomerNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCustomers">
+      <soap:operation soapAction="http://tempuri.org/ISCustomerService/getAllCustomers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerService">
+    <wsdl:port name="BasicHttpBinding_ISCustomerService" binding="tns:BasicHttpBinding_ISCustomerService">
+      <soap:address location="http://localhost:6508/CustomerService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
