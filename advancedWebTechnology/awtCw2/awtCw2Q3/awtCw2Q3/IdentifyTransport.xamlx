@@ -1,7 +1,6 @@
-﻿<WorkflowService mc:Ignorable="sap sap2010 sads" p:TextExpression.Namespaces="{x:Reference __ReferenceID2}" p:TextExpression.References="{x:Reference __ReferenceID3}" ConfigurationName="Service1" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="WorkflowService_1" Name="Service1"
+﻿<WorkflowService mc:Ignorable="sap sap2010 sads" p:TextExpression.Namespaces="{x:Reference __ReferenceID2}" p:TextExpression.References="{x:Reference __ReferenceID3}" ConfigurationName="IdentifyTransport" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" Name="IdentifyTransport"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
- xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
  xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities"
  xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
  xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
@@ -9,7 +8,7 @@
  xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
  xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <p:Sequence DisplayName="specifyTimeAndPlace Service" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <p:Sequence DisplayName="identifyTransport Service">
     <p:TextExpression.Namespaces>
       <sco:Collection x:TypeArguments="x:String" x:Name="__ReferenceID2">
         <x:String>System</x:String>
@@ -17,7 +16,6 @@
         <x:String>System.Data</x:String>
         <x:String>System.Linq</x:String>
         <x:String>System.Text</x:String>
-        <x:String>awtCw2Q3</x:String>
       </sco:Collection>
     </p:TextExpression.Namespaces>
     <p:TextExpression.References>
@@ -53,15 +51,13 @@
     </p:TextExpression.References>
     <p:Sequence.Variables>
       <p:Variable x:TypeArguments="CorrelationHandle" Name="handle" />
-      <p:Variable x:TypeArguments="x:Int32" Name="orderDate" />
-      <p:Variable x:TypeArguments="x:Int32" Name="studentNo" />
-      <p:Variable x:TypeArguments="x:String" Name="orignPlace" />
-      <p:Variable x:TypeArguments="x:String" Name="destinationPlace" />
-      <x:Reference>__ReferenceID1</x:Reference>
-      <p:Variable x:TypeArguments="x:Int32" Name="studentCardNo" />
+      <p:Variable x:TypeArguments="x:Int32" Name="data" />
     </p:Sequence.Variables>
-    <p:Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
-      <Receive x:Name="__ReferenceID0" CanCreateInstance="True" sap2010:WorkflowViewState.IdRef="Receive_2" OperationName="SpecifyTimeAndPlace" ServiceContractName="ISpecifyTimeAndPlace">
+    <p:Sequence>
+      <p:Sequence.Variables>
+        <x:Reference>__ReferenceID1</x:Reference>
+      </p:Sequence.Variables>
+      <Receive x:Name="__ReferenceID0" CanCreateInstance="True" OperationName="IdentifyTransport" ServiceContractName="IdentifyTransportService">
         <Receive.CorrelationInitializers>
           <RequestReplyCorrelationInitializer>
             <RequestReplyCorrelationInitializer.CorrelationHandle>
@@ -76,47 +72,42 @@
           </RequestReplyCorrelationInitializer>
         </Receive.CorrelationInitializers>
         <ReceiveParametersContent>
-          <p:OutArgument x:TypeArguments="x:Int32" x:Key="studentNo">
-            <mca:CSharpReference x:TypeArguments="x:Int32">studentNo</mca:CSharpReference>
-          </p:OutArgument>
-          <p:OutArgument x:TypeArguments="x:Int32" x:Key="orderDate">
-            <mca:CSharpReference x:TypeArguments="x:Int32">orderDate</mca:CSharpReference>
-          </p:OutArgument>
-          <p:OutArgument x:TypeArguments="x:String" x:Key="orignPlace">
-            <mca:CSharpReference x:TypeArguments="x:String">orignPlace</mca:CSharpReference>
-          </p:OutArgument>
-          <p:OutArgument x:TypeArguments="x:String" x:Key="destinationPlace">
-            <mca:CSharpReference x:TypeArguments="x:String">destinationPlace</mca:CSharpReference>
-          </p:OutArgument>
-          <p:OutArgument x:TypeArguments="x:Int32" x:Key="studentCardNo">
-            <mca:CSharpReference x:TypeArguments="x:Int32">studentCardNo</mca:CSharpReference>
-          </p:OutArgument>
+          <p:OutArgument x:TypeArguments="x:String" x:Key="orignPlace" />
+          <p:OutArgument x:TypeArguments="x:String" x:Key="destinationPlace" />
         </ReceiveParametersContent>
+        <sap2010:WorkflowViewState.IdRef>Receive_1</sap2010:WorkflowViewState.IdRef>
       </Receive>
-      <SendReply Request="{x:Reference __ReferenceID0}" DisplayName="SendReplyToReceive" sap2010:WorkflowViewState.IdRef="SendReply_2" />
+      <SendReply Request="{x:Reference __ReferenceID0}" DisplayName="SendReplyToReceive">
+        <SendParametersContent>
+          <p:InArgument x:TypeArguments="x:String" x:Key="vehicleType">plane</p:InArgument>
+        </SendParametersContent>
+        <sap2010:WorkflowViewState.IdRef>SendReply_1</sap2010:WorkflowViewState.IdRef>
+      </SendReply>
+      <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
     </p:Sequence>
-    <sads:DebugSymbol.Symbol>d2JDOlxVc2Vyc1xiZWFyZVxsYWJcYWR2YW5jZWRXZWJUZWNobm9sb2d5XGF3dEN3Mlxhd3RDdzJRM1xhd3RDdzJRM1xzcGVjaWZ5VGltZUFuZFBsYWNlU2VydmljZS54YW1seAoMA2MQAQE/BWESAQJAB18RAQZgB2CKAQEDXA1cXwEoVg1WXQEgUw1TWwEYUA1QWwEQRRFJIwEPWQ1ZYwEH</sads:DebugSymbol.Symbol>
+    <sap2010:WorkflowViewState.IdRef>Sequence_2</sap2010:WorkflowViewState.IdRef>
+    <sads:DebugSymbol.Symbol>d1lDOlxVc2Vyc1xiZWFyZVxsYWJcYWR2YW5jZWRXZWJUZWNobm9sb2d5XGF3dEN3Mlxhd3RDdzJRM1xhd3RDdzJRM1xJZGVudGlmeVRyYW5zcG9ydC54YW1seAYLA1oQAQE4BVcSAQI8B08RAQdQB1UTAQNBEUUjAQhSSFJNAQQ=</sads:DebugSymbol.Symbol>
   </p:Sequence>
+  <sap2010:WorkflowViewState.IdRef>WorkflowService_1</sap2010:WorkflowViewState.IdRef>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="Receive_2" sap:VirtualizedContainerService.HintSize="255.333333333333,90.6666666666667" />
-      <sap2010:ViewStateData Id="SendReply_2" sap:VirtualizedContainerService.HintSize="255.333333333333,90.6666666666667" />
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="277.333333333333,345.333333333333">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="299.333333333333,469.333333333333">
+      <sap2010:ViewStateData Id="Receive_1" sap:VirtualizedContainerService.HintSize="255.333333333333,90.6666666666667" />
+      <sap2010:ViewStateData Id="SendReply_1" sap:VirtualizedContainerService.HintSize="255.333333333333,90.6666666666667" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="277.333333333333,345.333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="307.333333333333,415.333333333333" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="299.333333333333,469.333333333333">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="329.333333333333,539.333333333333" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </WorkflowService>

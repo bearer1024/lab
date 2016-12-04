@@ -10,7 +10,13 @@ namespace awtCw2Q3
         private string studentName;
         private int studentNo;
 
-        public Student(string studentName,int studentNo)
+        public static Int32 specifyTimeAndPlace()
+        {
+
+            return 1;
+        }
+
+        public  Student(string studentName,int studentNo)
         {
             this.StudentName = studentName;
             this.StudentNo = studentNo;
