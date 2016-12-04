@@ -22,18 +22,48 @@
     </p1:TextExpression.Namespaces>
     <p1:TextExpression.References>
       <sco:Collection x:TypeArguments="p1:AssemblyReference" x:Name="__ReferenceID2">
-        <p1:AssemblyReference>mscorlib</p1:AssemblyReference>
+        <p1:AssemblyReference>Microsoft.CSharp</p1:AssemblyReference>
+        <p1:AssemblyReference>System.Web.DynamicData</p1:AssemblyReference>
+        <p1:AssemblyReference>System.Drawing</p1:AssemblyReference>
+        <p1:AssemblyReference>System.Web.Entity</p1:AssemblyReference>
+        <p1:AssemblyReference>System.Web.ApplicationServices</p1:AssemblyReference>
         <p1:AssemblyReference>System</p1:AssemblyReference>
+        <p1:AssemblyReference>System.Activities</p1:AssemblyReference>
         <p1:AssemblyReference>System.Core</p1:AssemblyReference>
         <p1:AssemblyReference>System.Data</p1:AssemblyReference>
+        <p1:AssemblyReference>System.Data.Entity</p1:AssemblyReference>
+        <p1:AssemblyReference>System.Runtime.Serialization</p1:AssemblyReference>
         <p1:AssemblyReference>System.ServiceModel</p1:AssemblyReference>
+        <p1:AssemblyReference>System.ServiceModel.Activities</p1:AssemblyReference>
+        <p1:AssemblyReference>System.ServiceModel.Channels</p1:AssemblyReference>
+        <p1:AssemblyReference>System.Web</p1:AssemblyReference>
+        <p1:AssemblyReference>System.Xaml</p1:AssemblyReference>
         <p1:AssemblyReference>System.Xml</p1:AssemblyReference>
+        <p1:AssemblyReference>System.Xml.Linq</p1:AssemblyReference>
+        <p1:AssemblyReference>Microsoft.ApplicationInsights</p1:AssemblyReference>
+        <p1:AssemblyReference>Microsoft.AI.Agent.Intercept</p1:AssemblyReference>
+        <p1:AssemblyReference>Microsoft.AI.DependencyCollector</p1:AssemblyReference>
+        <p1:AssemblyReference>Microsoft.AI.PerfCounterCollector</p1:AssemblyReference>
+        <p1:AssemblyReference>Microsoft.AI.ServerTelemetryChannel</p1:AssemblyReference>
+        <p1:AssemblyReference>Microsoft.AI.WindowsServer</p1:AssemblyReference>
+        <p1:AssemblyReference>Microsoft.AI.Web</p1:AssemblyReference>
+        <p1:AssemblyReference>mscorlib</p1:AssemblyReference>
+        <p1:AssemblyReference>awtCw2Q3</p1:AssemblyReference>
       </sco:Collection>
     </p1:TextExpression.References>
     <p1:Sequence.Variables>
       <p1:Variable x:TypeArguments="CorrelationHandle" Name="handle" />
       <p1:Variable x:TypeArguments="x:Int32" Name="data" />
+      <p1:Variable x:TypeArguments="x:Int32" Name="studentNumber" />
+      <p1:Variable x:TypeArguments="x:String" Name="student">
+        <p1:Variable.Default>
+          <mca:CSharpValue x:TypeArguments="x:String">new awtCw2Q3.Student("bearer", 1);</mca:CSharpValue>
+        </p1:Variable.Default>
+      </p1:Variable>
     </p1:Sequence.Variables>
+    <p1:WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="pls input your name and No" />
+    <p1:InvokeMethod MethodName="{x:Null}" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" TargetType="x:Object" />
+    <p1:Assign sap2010:WorkflowViewState.IdRef="Assign_1" />
     <Receive x:Name="__ReferenceID0" CanCreateInstance="True" DisplayName="ReceiveRequest" sap2010:WorkflowViewState.IdRef="Receive_1" OperationName="spacifyTimeAndPlace" ServiceContractName="p:IService">
       <Receive.CorrelationInitializers>
         <RequestReplyCorrelationInitializer>
@@ -57,13 +87,16 @@
         <p1:InArgument x:TypeArguments="x:Int32" x:Key="specifyEventNo" />
       </SendParametersContent>
     </SendReply>
-    <sads:DebugSymbol.Symbol>d2JDOlxVc2Vyc1xiZWFyZVxsYWJcYWR2YW5jZWRXZWJUZWNobm9sb2d5XGF3dEN3Mlxhd3RDdzJRM1xhd3RDdzJRM1xzcGVjaWZ5VGltZUFuZFBsYWNlU2VydmljZS54YW1seAQNAz0RAQElBTYPAQk3BTsRAQIqDypcAQo=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d2JDOlxVc2Vyc1xiZWFyZVxsYWJcYWR2YW5jZWRXZWJUZWNobm9sb2d5XGF3dEN3Mlxhd3RDdzJRM1xhd3RDdzJRM1xzcGVjaWZ5VGltZUFuZFBsYWNlU2VydmljZS54YW1seAkNA1sRAQE8CzxrAQJABUBlARpBBUF1ARlCBUI9ARhDBVQPARJVBVkRAQdARkBiARtID0hcARM=</sads:DebugSymbol.Symbol>
   </p1:Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="255.333333333333,62.6666666666667" />
+      <sap2010:ViewStateData Id="InvokeMethod_1" sap:VirtualizedContainerService.HintSize="255.333333333333,134.666666666667" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="255.333333333333,62.6666666666667" />
       <sap2010:ViewStateData Id="Receive_1" sap:VirtualizedContainerService.HintSize="255.333333333333,90.6666666666667" />
       <sap2010:ViewStateData Id="SendReply_1" sap:VirtualizedContainerService.HintSize="255.333333333333,90.6666666666667" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="277.333333333333,345.333333333333">
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="277.333333333333,725.333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
