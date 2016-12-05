@@ -1,6 +1,8 @@
 ﻿<WorkflowService mc:Ignorable="sap sap2010 sads" p:TextExpression.Namespaces="{x:Reference __ReferenceID2}" p:TextExpression.References="{x:Reference __ReferenceID3}" ConfigurationName="bookingService" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="WorkflowService_1" Name="bookingService"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel"
+ xmlns:a="clr-namespace:awtCw2Q3;assembly=awtCw2Q3"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
  xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities"
  xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
  xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
@@ -20,6 +22,13 @@
     </p:TextExpression.Namespaces>
     <p:TextExpression.References>
       <sco:Collection x:TypeArguments="p:AssemblyReference" x:Name="__ReferenceID3">
+        <p:AssemblyReference>Microsoft.AI.Agent.Intercept</p:AssemblyReference>
+        <p:AssemblyReference>Microsoft.AI.DependencyCollector</p:AssemblyReference>
+        <p:AssemblyReference>Microsoft.AI.PerfCounterCollector</p:AssemblyReference>
+        <p:AssemblyReference>Microsoft.AI.ServerTelemetryChannel</p:AssemblyReference>
+        <p:AssemblyReference>Microsoft.AI.Web</p:AssemblyReference>
+        <p:AssemblyReference>Microsoft.AI.WindowsServer</p:AssemblyReference>
+        <p:AssemblyReference>Microsoft.ApplicationInsights</p:AssemblyReference>
         <p:AssemblyReference>Microsoft.CSharp</p:AssemblyReference>
         <p:AssemblyReference>System.Web.DynamicData</p:AssemblyReference>
         <p:AssemblyReference>System.Drawing</p:AssemblyReference>
@@ -38,13 +47,6 @@
         <p:AssemblyReference>System.Xaml</p:AssemblyReference>
         <p:AssemblyReference>System.Xml</p:AssemblyReference>
         <p:AssemblyReference>System.Xml.Linq</p:AssemblyReference>
-        <p:AssemblyReference>Microsoft.ApplicationInsights</p:AssemblyReference>
-        <p:AssemblyReference>Microsoft.AI.Agent.Intercept</p:AssemblyReference>
-        <p:AssemblyReference>Microsoft.AI.DependencyCollector</p:AssemblyReference>
-        <p:AssemblyReference>Microsoft.AI.PerfCounterCollector</p:AssemblyReference>
-        <p:AssemblyReference>Microsoft.AI.ServerTelemetryChannel</p:AssemblyReference>
-        <p:AssemblyReference>Microsoft.AI.WindowsServer</p:AssemblyReference>
-        <p:AssemblyReference>Microsoft.AI.Web</p:AssemblyReference>
         <p:AssemblyReference>mscorlib</p:AssemblyReference>
         <p:AssemblyReference>awtCw2Q3</p:AssemblyReference>
       </sco:Collection>
@@ -56,6 +58,8 @@
     <p:Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
       <p:Sequence.Variables>
         <x:Reference>__ReferenceID1</x:Reference>
+        <p:Variable x:TypeArguments="x:Int32" Name="studentNo" />
+        <p:Variable x:TypeArguments="x:Int32" Name="studentCardNo" />
       </p:Sequence.Variables>
       <Receive x:Name="__ReferenceID0" CanCreateInstance="True" sap2010:WorkflowViewState.IdRef="Receive_1" OperationName="booking" ServiceContractName="BookingService">
         <Receive.CorrelationInitializers>
@@ -74,37 +78,50 @@
         <ReceiveParametersContent>
           <p:OutArgument x:TypeArguments="x:Int32" x:Key="specifyRecordNo" />
           <p:OutArgument x:TypeArguments="x:String" x:Key="vehicleType" />
-          <p:OutArgument x:TypeArguments="x:Int32" x:Key="studentNo" />
-          <p:OutArgument x:TypeArguments="x:Int32" x:Key="studentCardNo" />
+          <p:OutArgument x:TypeArguments="x:Int32" x:Key="studentNo">
+            <mca:CSharpReference x:TypeArguments="x:Int32">studentNo</mca:CSharpReference>
+          </p:OutArgument>
+          <p:OutArgument x:TypeArguments="x:Int32" x:Key="studentCardNo">
+            <mca:CSharpReference x:TypeArguments="x:Int32">studentCardNo</mca:CSharpReference>
+          </p:OutArgument>
         </ReceiveParametersContent>
       </Receive>
+      <p:InvokeMethod sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="pay" TargetType="a:PayForBooking">
+        <p:InArgument x:TypeArguments="x:Int32">
+          <mca:CSharpValue x:TypeArguments="x:Int32">studentNo</mca:CSharpValue>
+        </p:InArgument>
+        <p:InArgument x:TypeArguments="x:Int32">
+          <mca:CSharpValue x:TypeArguments="x:Int32">studentCardNo</mca:CSharpValue>
+        </p:InArgument>
+      </p:InvokeMethod>
       <SendReply Request="{x:Reference __ReferenceID0}" DisplayName="SendReplyToReceive" sap2010:WorkflowViewState.IdRef="SendReply_1">
         <SendParametersContent>
           <p:InArgument x:TypeArguments="x:Int32" x:Key="confirmationNumber">2016</p:InArgument>
         </SendParametersContent>
       </SendReply>
     </p:Sequence>
-    <sads:DebugSymbol.Symbol>d1ZDOlxVc2Vyc1xiZWFyZVxsYWJcYWR2YW5jZWRXZWJUZWNobm9sb2d5XGF3dEN3Mlxhd3RDdzJRM1xhd3RDdzJRM1xib29raW5nU2VydmljZS54YW1seAYLA1gQAQE4BVYSAQI8B1ARAQdRB1UTAQNBEUUjAQhTTlNSAQY=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d1ZDOlxVc2Vyc1xiZWFyZVxsYWJcYWR2YW5jZWRXZWJUZWNobm9sb2d5XGF3dEN3Mlxhd3RDdzJRM1xhd3RDdzJRM1xib29raW5nU2VydmljZS54YW1seAsNA2gQAQE6BWYSAQJAB1gRARRZB2AYAQdhB2UTAQNVDVVfARxSDVJbARZFEUkjARVeC15VAQ5bC1tRAQhjTmNSAQY=</sads:DebugSymbol.Symbol>
   </p:Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
       <sap2010:ViewStateData Id="Receive_1" sap:VirtualizedContainerService.HintSize="255.333333333333,90.6666666666667" />
+      <sap2010:ViewStateData Id="InvokeMethod_1" sap:VirtualizedContainerService.HintSize="255.333333333333,134.666666666667" />
       <sap2010:ViewStateData Id="SendReply_1" sap:VirtualizedContainerService.HintSize="255.333333333333,90.6666666666667" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="277.333333333333,345.333333333333">
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="277.333333333333,520">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="299.333333333333,469.333333333333">
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="299.333333333333,644">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="329.333333333333,539.333333333333" />
+      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="329.333333333333,714" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </WorkflowService>
