@@ -93,9 +93,13 @@
           </p:OutArgument>
         </ReceiveParametersContent>
       </Receive>
-      <SendReply Request="{x:Reference __ReferenceID0}" DisplayName="SendReplyToReceive" sap2010:WorkflowViewState.IdRef="SendReply_2" />
+      <SendReply Request="{x:Reference __ReferenceID0}" DisplayName="SendReplyToReceive" sap2010:WorkflowViewState.IdRef="SendReply_2">
+        <SendParametersContent>
+          <p:InArgument x:TypeArguments="x:Int32" x:Key="specifyEventNo">1</p:InArgument>
+        </SendParametersContent>
+      </SendReply>
     </p:Sequence>
-    <sads:DebugSymbol.Symbol>d2JDOlxVc2Vyc1xiZWFyZVxsYWJcYWR2YW5jZWRXZWJUZWNobm9sb2d5XGF3dEN3Mlxhd3RDdzJRM1xhd3RDdzJRM1xzcGVjaWZ5VGltZUFuZFBsYWNlU2VydmljZS54YW1seAoMA2MQAQE/BWESAQJAB18RAQZgB2CKAQEDXA1cXwEoVg1WXQEgUw1TWwEYUA1QWwEQRRFJIwEPWQ1ZYwEH</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d2JDOlxVc2Vyc1xiZWFyZVxsYWJcYWR2YW5jZWRXZWJUZWNobm9sb2d5XGF3dEN3Mlxhd3RDdzJRM1xhd3RDdzJRM1xzcGVjaWZ5VGltZUFuZFBsYWNlU2VydmljZS54YW1seAsMA2cQAQE/BWUSAQJAB18RAQdgB2QTAQNcDVxfASlWDVZdASFTDVNbARlQDVBbARFFEUkjARBZDVljAQhiSmJLAQQ=</sads:DebugSymbol.Symbol>
   </p:Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
