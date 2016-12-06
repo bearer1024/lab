@@ -75,7 +75,7 @@
         <p1:OutArgument x:TypeArguments="x:Int32" x:Key="studentNo" />
         <p1:OutArgument x:TypeArguments="x:Int32" x:Key="date" />
         <p1:OutArgument x:TypeArguments="x:String" x:Key="orignPlace" />
-        <p1:OutArgument x:TypeArguments="x:String" x:Key="desPlace" />
+        <p1:OutArgument x:TypeArguments="x:String" x:Key="destinationPlace" />
         <p1:OutArgument x:TypeArguments="x:Int32" x:Key="studentCardNo" />
       </ReceiveParametersContent>
     </Receive>

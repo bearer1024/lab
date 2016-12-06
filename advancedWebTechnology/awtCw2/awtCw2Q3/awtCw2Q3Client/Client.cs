@@ -24,8 +24,11 @@ namespace awtCw2Q3Client
                 string destinationPlace = splitedInputs[3];
                 Int32 studentCardNumber = Convert.ToInt32(splitedInputs[4]);
 
+                
+
                 IdentifyTransportServiceClient identifyClient = new IdentifyTransportServiceClient();
                 BookingServiceClient bookingClient = new BookingServiceClient();
+               
                 SpecifyTimeAndPlaceClient specifyTimeAndPlaceClient = new SpecifyTimeAndPlaceClient();
                 Int32 specifyRecordNo = specifyTimeAndPlaceClient.SpecifyTimeAndPlace(studentNo, orderDate, orignPlace, destinationPlace, studentCardNumber);
                 string vehicleType = identifyClient.IdentifyTransport(orignPlace, destinationPlace);

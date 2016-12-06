@@ -54,6 +54,7 @@
     <p:Sequence.Variables>
       <p:Variable x:TypeArguments="CorrelationHandle" Name="handle" />
       <p:Variable x:TypeArguments="x:Int32" Name="data" />
+      <p:Variable x:TypeArguments="x:String" Name="variable1" />
     </p:Sequence.Variables>
     <p:Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
       <p:Sequence.Variables>
@@ -100,7 +101,7 @@
         </SendParametersContent>
       </SendReply>
     </p:Sequence>
-    <sads:DebugSymbol.Symbol>d1ZDOlxVc2Vyc1xiZWFyZVxsYWJcYWR2YW5jZWRXZWJUZWNobm9sb2d5XGF3dEN3Mlxhd3RDdzJRM1xhd3RDdzJRM1xib29raW5nU2VydmljZS54YW1seAsNA2gQAQE6BWYSAQJAB1gRARRZB2AYAQdhB2UTAQNVDVVfARxSDVJbARZFEUkjARVeC15VAQ5bC1tRAQhjTmNSAQY=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d1ZDOlxVc2Vyc1xiZWFyZVxsYWJcYWR2YW5jZWRXZWJUZWNobm9sb2d5XGF3dEN3Mlxhd3RDdzJRM1xhd3RDdzJRM1xib29raW5nU2VydmljZS54YW1seAsNA2kQAQE7BWcSAQJBB1kRARZaB2EYAQdiB2YTAQNWDVZfAR9TDVNbARhGEUojARdfC19VAQ9cC1xRAQhkTmRSAQY=</sads:DebugSymbol.Symbol>
   </p:Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
