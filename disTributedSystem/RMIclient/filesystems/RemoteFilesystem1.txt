@@ -1,0 +1,25 @@
+# Each line contains TYPE, NAME and PARENT separated by comma:
+#
+# ITEM TYPE (DIR or FILE), FILE/DIRECTORY, PARENT DIRECTORY
+#     
+#        A-+
+#          +-B
+#          +-C-+ (books.xls.)
+#              +-D
+#              +-E (read.txt. hello.txt)
+#              +-F-+
+#                  +G 
+#
+# Note: The root folder's parent is labeled as "?"  
+#       Assuming all directories have different names
+#
+DIR,A,?
+DIR,B,A
+DIR,C,A
+FILE,books.xls,C
+DIR,D,C
+DIR,E,C
+FILE,readme.txt,E
+FILE,hello.txt,E
+DIR,F,C
+DIR,G,F
