@@ -1,0 +1,6 @@
+C:\Users\beare\lab\advancedWebTechnology\awtCw2\awtCw2Q3\awtCw2Q3Client\bin\Release\awtCw2Q3Client.exe.config
+C:\Users\beare\lab\advancedWebTechnology\awtCw2\awtCw2Q3\awtCw2Q3Client\bin\Release\awtCw2Q3Client.exe
+C:\Users\beare\lab\advancedWebTechnology\awtCw2\awtCw2Q3\awtCw2Q3Client\bin\Release\awtCw2Q3Client.pdb
+C:\Users\beare\lab\advancedWebTechnology\awtCw2\awtCw2Q3\awtCw2Q3Client\obj\Release\awtCw2Q3Client.csprojResolveAssemblyReference.cache
+C:\Users\beare\lab\advancedWebTechnology\awtCw2\awtCw2Q3\awtCw2Q3Client\obj\Release\awtCw2Q3Client.exe
+C:\Users\beare\lab\advancedWebTechnology\awtCw2\awtCw2Q3\awtCw2Q3Client\obj\Release\awtCw2Q3Client.pdb

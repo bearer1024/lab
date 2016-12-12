@@ -1,0 +1,126 @@
+﻿<WorkflowService mc:Ignorable="sap sap2010 sads" p:TextExpression.Namespaces="{x:Reference __ReferenceID2}" p:TextExpression.References="{x:Reference __ReferenceID3}" ConfigurationName="Service1" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="WorkflowService_1" Name="Service1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p:Sequence DisplayName="specifyTimeAndPlace Service" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <p:TextExpression.Namespaces>
+      <sco:Collection x:TypeArguments="x:String" x:Name="__ReferenceID2">
+        <x:String>System</x:String>
+        <x:String>System.Collections.Generic</x:String>
+        <x:String>System.Data</x:String>
+        <x:String>System.Linq</x:String>
+        <x:String>System.Text</x:String>
+        <x:String>awtCw2Q3</x:String>
+      </sco:Collection>
+    </p:TextExpression.Namespaces>
+    <p:TextExpression.References>
+      <sco:Collection x:TypeArguments="p:AssemblyReference" x:Name="__ReferenceID3">
+        <p:AssemblyReference>Microsoft.CSharp</p:AssemblyReference>
+        <p:AssemblyReference>System.Web.DynamicData</p:AssemblyReference>
+        <p:AssemblyReference>System.Drawing</p:AssemblyReference>
+        <p:AssemblyReference>System.Web.Entity</p:AssemblyReference>
+        <p:AssemblyReference>System.Web.ApplicationServices</p:AssemblyReference>
+        <p:AssemblyReference>System</p:AssemblyReference>
+        <p:AssemblyReference>System.Activities</p:AssemblyReference>
+        <p:AssemblyReference>System.Core</p:AssemblyReference>
+        <p:AssemblyReference>System.Data</p:AssemblyReference>
+        <p:AssemblyReference>System.Data.Entity</p:AssemblyReference>
+        <p:AssemblyReference>System.Runtime.Serialization</p:AssemblyReference>
+        <p:AssemblyReference>System.ServiceModel</p:AssemblyReference>
+        <p:AssemblyReference>System.ServiceModel.Activities</p:AssemblyReference>
+        <p:AssemblyReference>System.ServiceModel.Channels</p:AssemblyReference>
+        <p:AssemblyReference>System.Web</p:AssemblyReference>
+        <p:AssemblyReference>System.Xaml</p:AssemblyReference>
+        <p:AssemblyReference>System.Xml</p:AssemblyReference>
+        <p:AssemblyReference>System.Xml.Linq</p:AssemblyReference>
+        <p:AssemblyReference>Microsoft.ApplicationInsights</p:AssemblyReference>
+        <p:AssemblyReference>Microsoft.AI.Agent.Intercept</p:AssemblyReference>
+        <p:AssemblyReference>Microsoft.AI.DependencyCollector</p:AssemblyReference>
+        <p:AssemblyReference>Microsoft.AI.PerfCounterCollector</p:AssemblyReference>
+        <p:AssemblyReference>Microsoft.AI.ServerTelemetryChannel</p:AssemblyReference>
+        <p:AssemblyReference>Microsoft.AI.WindowsServer</p:AssemblyReference>
+        <p:AssemblyReference>Microsoft.AI.Web</p:AssemblyReference>
+        <p:AssemblyReference>mscorlib</p:AssemblyReference>
+        <p:AssemblyReference>awtCw2Q3</p:AssemblyReference>
+      </sco:Collection>
+    </p:TextExpression.References>
+    <p:Sequence.Variables>
+      <p:Variable x:TypeArguments="CorrelationHandle" Name="handle" />
+      <p:Variable x:TypeArguments="x:Int32" Name="orderDate" />
+      <p:Variable x:TypeArguments="x:Int32" Name="studentNo" />
+      <p:Variable x:TypeArguments="x:String" Name="orignPlace" />
+      <p:Variable x:TypeArguments="x:String" Name="destinationPlace" />
+      <x:Reference>__ReferenceID1</x:Reference>
+      <p:Variable x:TypeArguments="x:Int32" Name="studentCardNo" />
+    </p:Sequence.Variables>
+    <p:Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <Receive x:Name="__ReferenceID0" CanCreateInstance="True" sap2010:WorkflowViewState.IdRef="Receive_2" OperationName="SpecifyTimeAndPlace" ServiceContractName="ISpecifyTimeAndPlace">
+        <Receive.CorrelationInitializers>
+          <RequestReplyCorrelationInitializer>
+            <RequestReplyCorrelationInitializer.CorrelationHandle>
+              <p:InArgument x:TypeArguments="CorrelationHandle">
+                <p:VariableValue x:TypeArguments="CorrelationHandle">
+                  <p:VariableValue.Variable>
+                    <p:Variable x:TypeArguments="CorrelationHandle" x:Name="__ReferenceID1" Name="__handle1" />
+                  </p:VariableValue.Variable>
+                </p:VariableValue>
+              </p:InArgument>
+            </RequestReplyCorrelationInitializer.CorrelationHandle>
+          </RequestReplyCorrelationInitializer>
+        </Receive.CorrelationInitializers>
+        <ReceiveParametersContent>
+          <p:OutArgument x:TypeArguments="x:Int32" x:Key="studentNo">
+            <mca:CSharpReference x:TypeArguments="x:Int32">studentNo</mca:CSharpReference>
+          </p:OutArgument>
+          <p:OutArgument x:TypeArguments="x:Int32" x:Key="orderDate">
+            <mca:CSharpReference x:TypeArguments="x:Int32">orderDate</mca:CSharpReference>
+          </p:OutArgument>
+          <p:OutArgument x:TypeArguments="x:String" x:Key="orignPlace">
+            <mca:CSharpReference x:TypeArguments="x:String">orignPlace</mca:CSharpReference>
+          </p:OutArgument>
+          <p:OutArgument x:TypeArguments="x:String" x:Key="destinationPlace">
+            <mca:CSharpReference x:TypeArguments="x:String">destinationPlace</mca:CSharpReference>
+          </p:OutArgument>
+          <p:OutArgument x:TypeArguments="x:Int32" x:Key="studentCardNo">
+            <mca:CSharpReference x:TypeArguments="x:Int32">studentCardNo</mca:CSharpReference>
+          </p:OutArgument>
+        </ReceiveParametersContent>
+      </Receive>
+      <SendReply Request="{x:Reference __ReferenceID0}" DisplayName="SendReplyToReceive" sap2010:WorkflowViewState.IdRef="SendReply_2">
+        <SendParametersContent>
+          <p:InArgument x:TypeArguments="x:Int32" x:Key="specifyEventNo">1</p:InArgument>
+        </SendParametersContent>
+      </SendReply>
+    </p:Sequence>
+    <sads:DebugSymbol.Symbol>d2JDOlxVc2Vyc1xiZWFyZVxsYWJcYWR2YW5jZWRXZWJUZWNobm9sb2d5XGF3dEN3Mlxhd3RDdzJRM1xhd3RDdzJRM1xzcGVjaWZ5VGltZUFuZFBsYWNlU2VydmljZS54YW1seAsMA2cQAQE/BWUSAQJAB18RAQdgB2QTAQNcDVxfASlWDVZdASFTDVNbARlQDVBbARFFEUkjARBZDVljAQhiSmJLAQQ=</sads:DebugSymbol.Symbol>
+  </p:Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Receive_2" sap:VirtualizedContainerService.HintSize="255.333333333333,90.6666666666667" />
+      <sap2010:ViewStateData Id="SendReply_2" sap:VirtualizedContainerService.HintSize="255.333333333333,90.6666666666667" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="277.333333333333,345.333333333333">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="299.333333333333,469.333333333333">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="307.333333333333,415.333333333333" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</WorkflowService>
