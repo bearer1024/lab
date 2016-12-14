@@ -20,43 +20,34 @@ public class Hour{
        extends Mapper<Object, Text, Text, IntWritable>{
 
     private final static IntWritable one = new IntWritable(1);
-    private Text inputs = new Text();
+    private Text text = new Text();
 
     public void map(Object key, Text value, Context context
                     ) throws IOException, InterruptedException {
-	    StringTokenizer itr = new StringTokenizer(value.toString(),",");
-	    String accident_Index = itr.nextToken();
-	    String location_Easting_OSGR = itr.nextToken();
-	    String location_Northing_OSGR = itr.nextToken();
-	    String longitude = itr.nextToken();
-            String latitude = itr.nextToken();
-	    String police_Force = itr.nextToken();
-	    String accident_Severity = itr.nextToken();
-	    String number_of_Vehicles = itr.nextToken();
-	    String number_of_Casualties = itr.nextToken();
-	    String date = itr.nextToken();
-	    String day_of_Week = itr.nextToken();
-	    String time = itr.nextToken();
-	    String timeForHour = time.split(":")[0];
-	    String finalDay = " ";
-	    try{
-	    int finalDayInt = Integer.parseInt(day_of_Week);
-	    if((finalDayInt) >= 2 && (finalDayInt) <= 6){
-		   finalDay = "WD";
-	    }else if(finalDayInt==1 || finalDayInt == 7){
-		    finalDay = "WE";
-	    }
-	    String local_Authority_District = itr.nextToken();
-	    String local_Authority_HighwayAndOthers = itr.nextToken();
+	    String[] inputs = value.toString().split(",");
+	    String day_of_Week = inputs[10];
+	    String time = inputs[11];
+	    if(!day_of_Week.equals(null) && day_of_Week.length() != 0 && !day_of_Week.equals("Day_of_Week")){
 
-	    inputs.set(finalDay+"|"+timeForHour);
+		    if(!time.equals(null) && time.length() != 0 && !time.equals("Time")){
+		    String timeForHour = time.split(":")[0];
+		    String finalDay = " ";
+		    int finalDayInt = Integer.parseInt(day_of_Week);
+		    if((finalDayInt) >= 2 && (finalDayInt) <= 6){
+			   finalDay = "WD";
+		    }else if(finalDayInt==1 || finalDayInt == 7){
+			    finalDay = "WE";
+		    }
 
-	    context.write(inputs,one);
+		    if(!timeForHour.equals(null)){
 
-	    }catch (NumberFormatException e){
-	    System.out.println("here has numberFormatException, but it doesn't matter");
-	    }
-    }
+		    text.set(finalDay+":"+timeForHour);
+		    }
+
+		    context.write(text,one);
+		    }
+		    }
+		    }
   }
 
   public static class IntSumReducer
