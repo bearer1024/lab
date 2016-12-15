@@ -1,3 +1,9 @@
+/*
+ *Mapper side output district as key, date of each accident as value to the reducer
+ *Reducer side uses HashMap to store the number of accidents happen for each day,
+ *then it filters and counts only those days which have over 5 accidents.
+ * The Reducer's output uses district as key and numberOfDays as value;
+ */
 package org.leicester;
 
 import java.io.IOException;
@@ -21,52 +27,55 @@ public class District {
   public static class TokenizerMapper
        extends Mapper<Object, Text, IntWritable, Text>{
 
+    //using IntWritable type because it's convinent to do sorting
     private IntWritable district = new IntWritable();
     private Text dateWritable = new Text();
-    private final static IntWritable one = new IntWritable(1);
 
-    // mapper outputs username|url as key and date as value for every url visit by username
+    // mapper outputs district as key and date as value for every accident
     public void map(Object key, Text value, Context context
                     ) throws IOException, InterruptedException {
 	    String[] inputs = value.toString().split(",");
 	    String dateFromCsv = inputs[9];
 	    String districtFromCsv = inputs[12];
+	    //ignore blank field in csv files
 	    if(!dateFromCsv.equals(null) && dateFromCsv.length() != 0 && !dateFromCsv.equals("Date")){
 		    if(!districtFromCsv.equals(null) && districtFromCsv.length() != 0 && !districtFromCsv.equals("Local_Authority_(District)")){
 		    dateWritable.set(dateFromCsv);
 		    district.set(Integer.parseInt(districtFromCsv));
 		    context.write(district,dateWritable);
 		    }
-		    }
-		    }
-		    }
+	    }
+	    }
+    }
 
-    // reducer checks if some date occurs at least twice and, if so, emits username as key and url as value
+    // reducer checks if some date occurs at least 5 times, if so, emits district as key and numberOfDays which has over 5 accidents  as value
   public static class DateReducer
        extends Reducer<IntWritable,Text,IntWritable,Text> {
-    private Text days = new Text();
+    private Text numberOfDays = new Text();
     private IntWritable district = new IntWritable();
 
     public void reduce(IntWritable key, Iterable<Text> values,
                        Context context ) throws IOException, InterruptedException {
+      //use hashMap structure to store date as key, the occur time of each date as value
       HashMap<String,Integer> hashMap = new HashMap<String,Integer>();
-
-      boolean found=false;
 
       for (Text value : values) {
         String date = value.toString();
 	int dateOccurTime = 1;
+	//cout dateOccurTime
         if (hashMap.containsKey(date)) {
 	  dateOccurTime += hashMap.get(date);
 	}
+	//add to hashMap
 	hashMap.put(date,dateOccurTime);
       }
       int sum = 0;
       for(Map.Entry<String,Integer> entry : hashMap.entrySet()){
+	   //if that day has over 5 accident then it could be counted into numberOfDays
 	      if(entry.getValue() >= 5) sum++;
       }
-      days.set(Integer.toString(sum));
-      context.write(key,days);
+      numberOfDays.set(Integer.toString(sum));
+      context.write(key,numberOfDays);
     }
   }
 
