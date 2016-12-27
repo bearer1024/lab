@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import uk.ac.le.cs.CO3098.cw3.domain.ClassHierarchy;
 import uk.ac.le.cs.CO3098.cw3.repository.CLASS_HIERARCHYRepository;
 @Service
-public class CLASS_HIERARCHYService {
+public class ClassHierarchyService {
 
 	@Autowired
 	private  CLASS_HIERARCHYRepository hierarchyRepository;

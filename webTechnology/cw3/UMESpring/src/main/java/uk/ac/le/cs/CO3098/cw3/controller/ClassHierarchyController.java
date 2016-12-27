@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import uk.ac.le.cs.CO3098.cw3.domain.ClassHierarchy;
 import uk.ac.le.cs.CO3098.cw3.domain.UMTClass;
-import uk.ac.le.cs.CO3098.cw3.service.CLASS_HIERARCHYService;
+import uk.ac.le.cs.CO3098.cw3.service.ClassHierarchyService;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
 import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.http.HttpStatus;
@@ -29,10 +29,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 @Controller
 @RequestMapping(value = {"/rest/class"})
-public class CLASS_HIERARCHYController{
+public class ClassHierarchyController{
 
 @Autowired
-CLASS_HIERARCHYService hierarchyService;
+ClassHierarchyService hierarchyService;
 
 @RequestMapping(value = {"/create"})
 	public @ResponseBody String create(@RequestParam(value = "classname",required = true) String classname,
@@ -54,7 +54,7 @@ public @ResponseBody Object listAllJson(Model model){
     return o;
 }
 
-@RequestMapping (value="/rest/class/delete?",method = RequestMethod.GET)
+@RequestMapping (value="/rest/class/delete?")
 	public @ResponseBody String delete(@RequestParam(value = "classname",required = true) String classname ){
 		
 		return new UMTClass(classname).toString();
