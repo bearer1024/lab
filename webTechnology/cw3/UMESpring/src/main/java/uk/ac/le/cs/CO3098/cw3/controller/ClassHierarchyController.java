@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import uk.ac.le.cs.CO3098.cw3.domain.ClassHierarchy;
 import uk.ac.le.cs.CO3098.cw3.domain.UMTClass;
 import uk.ac.le.cs.CO3098.cw3.service.ClassHierarchyService;
@@ -33,19 +34,32 @@ public class ClassHierarchyController{
 
 @Autowired
 ClassHierarchyService hierarchyService;
+//public ClassHierarchy classHierarchyShare = new ClassHierarchy();
 
 @RequestMapping(value = {"/create"})
-	public @ResponseBody String create(@RequestParam(value = "classname",required = true) String classname,
+	public @ResponseBody boolean createSubClassAndSuperClass(@RequestParam(value = "classname",required = true) String classname,
 			@RequestParam(value = "superclass",required = false) String superclass){
-		if(!classname.equals(null)){
-			if(!superclass.equals(null)){
-				hierarchyService.save(new ClassHierarchy(classname,superclass));
-			}else{
-				hierarchyService.save(new ClassHierarchy(classname));
+		if((!classname.equals(null))
+				//&&(!superclass.equals(null))
+				){
+				ClassHierarchy ch = new ClassHierarchy(classname,superclass);
+				ch.setSuperclass(superclass);
+				hierarchyService.save(ch);
+			return true;
 			}
-		return "crated class successfully";
+		return false;
+	}
+	
+
+	public @ResponseBody boolean createSuperClass(@RequestParam(value = "classname",required = true) String classname){
+		if(!classname.equals(null)){
+			ClassHierarchy ch = new ClassHierarchy(classname);
+			ch.setSuperclass(classname);
+			hierarchyService.save(ch);
+			return true;
 		}
-		return "failed to crate class";
+		return false;
+		
 	}
 
 @RequestMapping(value = {"/listAllJson"})

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import uk.ac.le.cs.CO3098.cw3.domain.ClassHierarchy;
+import uk.ac.le.cs.CO3098.cw3.domain.UMTClass;
 import uk.ac.le.cs.CO3098.cw3.repository.CLASS_HIERARCHYRepository;
 @Service
 public class ClassHierarchyService {
@@ -13,6 +14,13 @@ public class ClassHierarchyService {
 	
 	public Object findAllClasses(){
 		return hierarchyRepository.findAll();
+	}
+	
+	public boolean setHierarchy(String classname){
+		UMTClass umtClass = new UMTClass(classname);
+		umtClass.addSuperclass(umtClass);
+//		umtClass.
+		return false;
 	}
 	
 	public void deleteByClassName(String className){
