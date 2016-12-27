@@ -62,16 +62,19 @@ ClassHierarchyService hierarchyService;
 		
 	}
 
+@RequestMapping(value = {"/delete"})
+	public @ResponseBody boolean deleteByClassName(String className){
+		if(hierarchyService.deleteByClassName(className)){
+			return true;
+		}
+		return false;
+
+	}
+	
 @RequestMapping(value = {"/listAllJson"})
 public @ResponseBody Object listAllJson(Model model){
     Object o=hierarchyService.findAllClasses();
     return o;
-}
-
-@RequestMapping (value="/rest/class/delete?")
-	public @ResponseBody String delete(@RequestParam(value = "classname",required = true) String classname ){
-		
-		return new UMTClass(classname).toString();
 }
 
 

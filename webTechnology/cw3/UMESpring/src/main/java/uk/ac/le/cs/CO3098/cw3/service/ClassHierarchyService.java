@@ -1,5 +1,7 @@
 package uk.ac.le.cs.CO3098.cw3.service;
 
+import java.util.Vector;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,15 +21,19 @@ public class ClassHierarchyService {
 	public boolean setHierarchy(String classname){
 		UMTClass umtClass = new UMTClass(classname);
 		umtClass.addSuperclass(umtClass);
-//		umtClass.
 		return false;
 	}
 	
-	public void deleteByClassName(String className){
-//		hierarchyRepository.delete();
+	public boolean deleteByClassName(String className){
+//		hierarchyRepository.delete(entity);
+		return false;
 	}
 	public void save(ClassHierarchy h){
 		hierarchyRepository.save(h);
 		
+	}
+	
+	public void saveSuperClasses(Vector<ClassHierarchy> classes){
+		hierarchyRepository.save(classes);
 	}
 }
