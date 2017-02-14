@@ -8,4 +8,31 @@ font-family:Verdana,Arial,sans-serif;
 margin:auto;
 width:80%;
 min-width:700px;
-background-colour:#E8D882;}
+background-colour:#E8D882;
+border:2px double #000000;}
+
+#logo{
+border-bottom:2px double #000000;
+
+}
+
+#leftColumn{
+float:left;
+width:20%;
+background-colour:#111111;
+}
+
+#rightColumn{
+margin-left:20%;
+}
+
+.navBar{
+text-decoration:none;
+margin:20%;
+//background-color:#F1E8B0;
+display:block;
+}
+
+h1{
+text-align:center;
+}
