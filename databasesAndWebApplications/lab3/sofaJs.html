@@ -1,24 +1,28 @@
 <!DOCTYPE html>
+<!-- An example for the use of click event with radio button,
+registering the event handler by assignment to the button
+attributes & illustrating dynamic image content
+-->
 <html>
 <head>
 <title>sofa personalisation</title>
 <script>
+//The event handler for a radio button collection
 function chooseColour(colour){
 alert("you have choosen "+colour);
 }
 
+//The event handler for design choice
 function chooseDesign(design){
-document.getElementById("showChoosedDesign").value="This is "+design;
-if(design=="design1"){
-document.getElementById("showSofa").src="sofa1.jpg";}
-else(design=="design2"){
-document.getElementById("showSofa").src="sofa2.jpg";}
-}
-else(design=="design3"){
-document.getElementById("showSofa").src="sofa3.jpg";}
-}
-else{
-alert("invalid choice");}
+	document.getElementById("showChoosedDesign").value="This is "+design;
+	if(design=="design1"){
+	document.getElementById("showSofa").src="sofa1.jpg";}
+	else if(design=="design2"){
+	document.getElementById("showSofa").src="sofa2.jpg";}
+	else if(design=="design3"){
+	document.getElementById("showSofa").src="sofa3.jpg";}
+	else{
+	alert("invalid choice");}
 }
 </script>
 </head>
