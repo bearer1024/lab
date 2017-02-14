@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC>
+
+<!-- Exercise3.hmtl
+     An example of the use of the click event with radio buttons,
+     registering the event handler by assignment to the button
+     attributes & illustrating dynamic image content   
+     -->
+<html>
+  <head>
+    <title>Sofa personalisation</title>
+  <script type = "text/javascript">
+
+	// The event handler for a radio button collection
+      function colourChoice (colour) {
+		// Produce an alert message about the chosen colour
+            alert("You have chosen " + colour);
+      }
+
+	// The event handler for design choice
+      function designChoice (design) {
+	  if(design=="Design 1")
+	  {
+	  document.getElementById("sofaImg").src = "sofa1.jpg"; 
+				document.getElementById("designP").value = "This is Design 1"; 
+	  }
+	  else
+	  if(design=="Design 2")
+	  {
+	  document.getElementById("sofaImg").src = "sofa2.jpg"; 
+			      document.getElementById("designP").value = "This is Design 2"; 
+	  }
+	  else
+	  if(design=="Design 3")
+	  {
+	  document.getElementById("sofaImg").src = "sofa3.jpg"; 
+				document.getElementById("designP").value = "This is Design 3"; 
+	  }
+	  else
+	  alert("Invalid choice");
+		 
+      }
+
+    </script>
+</head>
+
+<body>
+    <h4> Choose the colour you would like: </h4>
+    <form id = "form1"  action = "">
+      <p>
+        <input type = "radio"  name = "colourButton"  value = "red"
+               onclick = "colourChoice(value)">
+        Red
+        <br>
+        <input type = "radio"  name = "colourButton"  value = "blue"
+               onclick = "colourChoice(value)">
+        Blue
+        <br>
+        <input type = "radio"  name = "colourButton"  value = "orange"
+               onclick = "colourChoice(value)">      
+        Orange
+        <br>
+        <input type = "radio"  name = "colourButton"  value = "green"
+               onclick = "colourChoice(value)">
+        Green 
+      </p>
+      <br>	
+      <h4> Choose the design you would like: </h4>
+	<p>
+	  <input type = "button" value = "Design 1"
+               onclick = "designChoice(value)">      	
+	  <input type = "button" value = "Design 2"
+               onclick = "designChoice(value)">
+	  <input type = "button" value = "Design 3"
+               onclick = "designChoice(value)">  
+	</p>          
+      <p> 
+        <input type = "text" id = "designP" value ="This is Design 1"> 
+	  <br> <br>
+        <img src = "sofa1.jpg" id = "sofaImg" alt = "Sofa Design 1">	
+	  <br> <br> 
+	  <input type = "submit" value = "Submit Request">
+	  <br> 
+	</p> 
+    </form>
+  </body>
+</html>
+

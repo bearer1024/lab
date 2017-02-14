@@ -1,0 +1,11 @@
+body{
+background-color:#ffffcc;
+color:#330000;
+font-family:Verdana,Arial,sans-serif;
+}
+
+#container{
+margin:auto;
+width:80%;
+min-width:700px;
+background-colour:#E8D882;}

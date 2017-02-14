@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>sofa personalisation</title>
+<script>
+function chooseColour(colour){
+alert("you have choosen "+colour);
+}
+
+function chooseDesign(design){
+document.getElementById("showChoosedDesign").value="This is "+design;
+if(design=="design1"){
+document.getElementById("showSofa").src="sofa1.jpg";}
+else(design=="design2"){
+document.getElementById("showSofa").src="sofa2.jpg";}
+}
+else(design=="design3"){
+document.getElementById("showSofa").src="sofa3.jpg";}
+}
+else{
+alert("invalid choice");}
+}
+</script>
+</head>
+<body>
+<h4>Choose the colour you would like</h4>
+<form action="sofaJs.html">
+<label for="red">Red</label>
+<input type="radio" name="colurButton" value="Red" id="red" onclick="chooseColour(value)"/><br>
+<label for="blue">Blue</label>
+<input type="radio" value="Blue" name="colourButton" id="blue"onclick="chooseColour(value)"/><br>
+<label for="orange">Orange</label>
+<input type="radio" value="Orange" name="colourButton" id="orange"onclick="chooseColour(value)"/><br>
+<label for="green">Green</label>
+<input type="radio" value="Green" name="colourButton" id="green" onclick="chooseColour(value)"/><br><br>
+
+<h4>Choose the design you would like</h4>
+<input type="button" value="design1" onclick="chooseDesign(value)">
+<input type="button" value="design2" onclick="chooseDesign(value)">
+<input type="button" value="design3" onclick="chooseDesign(value)">
+<input id="showChoosedDesign"><br>
+<img id="showSofa" src="sofa1.jpg" alt="design pattern1"><br>
+<input type="submit" value="Submit">
+
+</form>
+</body>
+</html>
