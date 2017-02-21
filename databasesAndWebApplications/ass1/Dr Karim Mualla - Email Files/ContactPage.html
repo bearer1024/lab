@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Dr Karim Mualla</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script type = "text/javascript">
+      function Result () {
+	 
+	  var fname=document.getElementById('fname').value;
+	  var lname=document.getElementById('lname').value;
+	  var msg=document.getElementById('msg').value;
+        alert("Thank you " + fname +" "+ lname +" ." + "\nYour message is '" + msg+"'");
+		  
+      }
+	  </script>
+ </head>
+ <body>
+  <div id="container">
+   <div id="header">
+    <h1>My website</h1>
+   </div>
+   
+   <div id="content">
+    <div id="nav">
+     <h2>Navigation</h2>
+     <ul>
+      <li><a class="selected" href="index.html">Home</a></li>
+      <li><a href="mailto::kjm49@le.ac.uk">About</a></li>
+      <li><a href="ContactPage.html" target="_blank">Contact</a></li>
+     </ul>
+    </div>
+    
+    <div id="main">
+     <div>
+  <form action="">
+  <br>
+  <br>
+    <label for="fname">First Name</label>
+    <br>
+	<input type="text" id="fname" name="firstname"/></br>
+	<br>
+    <label for="lname">Last Name</label>
+    <br>
+	<input type="text" id="lname" name="lastname"/>
+	<br>
+	<br>
+    <label for="country">Country</label></br>
+    <br>
+	<select id="country" name="country">
+	<option value="usa">UK</option>
+      <option value="australia">Australia</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+    </select>
+	<br>
+	<br>
+	
+	<textarea id="msg"
+	placeholder="Enter your Message Here..."
+		name="mytextarea"
+		rows="10"
+		cols="20"></textarea>
+  <br>
+  <br>
+    <input type="submit" value="Submit" onclick="Result();">
+	<br><br>
+  </form>
+</div>
+   </div>
+   <div id="footer"><br>
+    Copyright &copy; 2017 Dr Karim Mualla
+   </div>
+  </div>
+ </body>
+</html>
