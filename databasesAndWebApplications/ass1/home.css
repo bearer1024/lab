@@ -23,19 +23,26 @@ background-color:grey;}
 float:left;
 width:180px;
 height:600px;
-padding:0px 10px 10px 0px;}
-
+padding:0px 10px 10px 10px;}
+#nav ul{
+margin-top:5px;
+padding:0px;}
 #nav ul li{
 list-style-type:none;
 color:red;}
 
 #nav ul li h2{
-padding:0px 10px 10px 0px;
 color:green;
 }
+
+h1,h2,h3{
+margin:0;}
 
 #main{
 margin-left:200px;
 height:600px;
 width:600px;}
 
+#footer{
+color:white;
+text-align:right;}
