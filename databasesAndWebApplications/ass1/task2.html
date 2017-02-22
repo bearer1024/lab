@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+<style>
+#main{
+    margin:auto;
+    width:50%;
+    border:solid 10px;}
+select {
+    height:200px ;
+    width:30%;
+}
+</style>
+        <script>
+        function selectCount(){
+
+            var selectObject = document.getElementById("selectBox");
+            var numberSelected = 0;
+            var length = selectObject.options.length;
+            for(var i=0;i<length;i++){
+                if(selectObject.options[i].selected){
+                    numberSelected++;}
+            }
+                alert("number of option selected: "+numberSelected);
+        }
+        </script>
+    </head>
+    <body>
+        <div id="main">
+            <p>Choose some music types, them click the button below</p>
+            <form action="" name="selectForm">
+                <select id="selectBox" name="musics" multiple="multiple">
+                    <option value="R&B">R&B</option>
+                    <option value="Jazz">Jazz</option>
+                    <option value="Blues">Blues</option>
+                    <option value="New Age">New Age</option>
+                    <option value="Classical">Classical</option>
+                    <option value="Opera">Opera</option>
+                </select>
+                <br>
+                <button type="submit" onclick="selectCount()" 
+                    value="submitButton">How many are selected?</button>
+                </form>
+        </div>
+    </body>
+</html>
