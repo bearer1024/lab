@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="style.css">
+<title>my website</title>
+<script>
+function showResponse(){
+    firstName=document.getElementById("fName").value;
+    lastName=document.getElementById("lName").value;
+    typedMessage=document.getElementById("contactMessage").value;
+    fullName=firstName+" "+lastName;
+    alert("Thank you "+fullName+"."+"\nyour message is: "+typedMessage);
+}
+</script>
+</head>
+<body>
+<div id="container">
+    <div id="header">
+        <header>
+        <h1>My Website</h1>
+        </header>
+    </div>
+
+    <div id="content">
+        <div id="nav">
+            <ul>
+            <li><h2>Navigation</h2></li>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="mailto::bearer1024@gmail.com">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+    <form action="">
+        <p>First Name</p>
+        <input type="text" id="fName" name="firstName"><br>
+        <p>Last Name</p>
+        <input type="text" id="lName" name="lastName"><br>
+        <p>Country</p>
+        <select name="country">
+        <option value="UK">UK</option>
+        <option value="CN">CN</option>
+        <option value="US">US</option>
+        </select><br>
+        <textarea id="contactMessage" rows="10" cols="20" name="myTextArea" placeholder="Enter Here...">
+        </textarea>
+        <br>
+        <input type="button" onclick="showResponse()" value="Submit"/>
+    </form>
+    </div>
+</div>
+</body>
+</html>
+
